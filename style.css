@@ -163,7 +163,7 @@ a:focus-visible {
 }
 
 .profile-bio {
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.4rem;
 }
 
 .profile-details {
@@ -177,8 +177,18 @@ a:focus-visible {
 }
 
 .profile-details a {
-  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--link);
   text-decoration: none;
+}
+
+.profile-icon {
+  display: block;
+  width: 0.875rem;
+  height: 0.875rem;
+  flex: 0 0 0.875rem;
 }
 
 .profile-details a:hover,
