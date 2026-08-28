@@ -145,6 +145,26 @@ a:focus-visible {
   padding: 2rem 1rem 6rem;
 }
 
+.profile-sidebar {
+  min-height: 8rem;
+  padding-bottom: 1.5rem;
+}
+
+.profile-name {
+  margin: 0 0 0.75rem;
+  color: var(--heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.profile-content {
+  min-height: 4rem;
+}
+
+.page-content {
+  min-width: 0;
+}
+
 .content-section {
   min-height: 18rem;
   padding-top: 1rem;
@@ -183,6 +203,22 @@ h2 {
   min-height: 9rem;
   background: var(--footer);
   border-top: 1px solid var(--border);
+}
+
+@media (min-width: 64rem) {
+  .page {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 1fr);
+    gap: 4rem;
+  }
+
+  .profile-sidebar {
+    position: sticky;
+    top: calc(var(--masthead-height) + 2rem);
+    align-self: start;
+    min-height: 16rem;
+    padding-bottom: 0;
+  }
 }
 
 @media (max-width: 48rem) {
