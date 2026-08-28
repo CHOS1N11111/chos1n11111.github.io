@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content" data-i18n="skipToContent">Skip to content</a>
 
     <header class="masthead">
       <div class="masthead-inner">
@@ -26,23 +26,23 @@
           <span aria-hidden="true"></span>
         </button>
 
-        <nav class="site-navigation" id="site-navigation" aria-label="Primary navigation">
-          <a href="#education">Education</a>
-          <a href="#projects">Projects</a>
-          <a href="#work-experience">Work Experience</a>
+        <nav class="site-navigation" id="site-navigation" aria-label="Primary navigation" data-i18n-aria-label="primaryNavigation">
+          <a href="#education" data-i18n="education">Education</a>
+          <a href="#projects" data-i18n="projects">Projects</a>
+          <a href="#work-experience" data-i18n="workExperience">Work Experience</a>
         </nav>
       </div>
     </header>
 
     <main class="page" id="main-content">
-      <aside class="profile-sidebar" aria-label="Personal profile">
+      <aside class="profile-sidebar" aria-label="Personal profile" data-i18n-aria-label="personalProfile">
         <p class="profile-name">CHOS1N11111</p>
         <div class="profile-content">
-          <p class="profile-bio">B.E. in Artificial Intelligence, Tongji University</p>
+          <p class="profile-bio" data-i18n="profileBio">B.E. in Artificial Intelligence, Tongji University</p>
           <ul class="profile-details">
             <li class="profile-location">
               <img class="profile-icon" src="./assets/icons/location.svg" alt="" width="16" height="16">
-              <span>Shanghai, China</span>
+              <span data-i18n="profileLocation">Shanghai, China</span>
             </li>
             <li>
               <a href="mailto:zhuzenan02@gmail.com" aria-label="Gmail zhuzenan02@gmail.com">
@@ -70,42 +70,61 @@
             </li>
           </ul>
         </div>
+
+        <div class="language-switcher" role="group" aria-label="Language" data-i18n-aria-label="languageSwitcher">
+          <button class="language-option" type="button" data-language="en" aria-pressed="true" lang="en">English</button>
+          <button class="language-option" type="button" data-language="zh-CN" aria-pressed="false" lang="zh-CN">中文</button>
+        </div>
       </aside>
 
       <div class="page-content">
         <section class="content-section content-section-first" id="education">
-          <h2>Education</h2>
+          <h2 data-i18n="education">Education</h2>
+
+          <div class="education-list">
+            <article class="education-entry">
+              <div class="education-entry-header">
+                <h3 class="education-institution" data-i18n="tongjiUniversity">Tongji University</h3>
+                <p class="education-period" data-i18n="educationPeriod">2023–2027 (Expected)</p>
+              </div>
+              <p class="education-degree" data-i18n="educationDegree">B.E. in Artificial Intelligence</p>
+              <div class="education-affiliation-row">
+                <p class="education-affiliation" data-i18n="educationAffiliation">College of Electronic and Information Engineering</p>
+                <p class="education-location" data-i18n="educationLocation">Shanghai, China</p>
+              </div>
+            </article>
+          </div>
         </section>
 
         <section class="content-section projects-section" id="projects">
-          <h2>Projects</h2>
+          <h2 data-i18n="projects">Projects</h2>
 
           <div class="project-list">
             <article class="project-entry">
               <h3 class="project-title">
                 <a href="https://github.com/infinityf4p/TiebaPure-Android" target="_blank" rel="noopener noreferrer">TiebaPure Android</a>
               </h3>
-              <p class="project-description">An unofficial Baidu Tieba client built natively with Kotlin and Jetpack Compose, supporting browsing, search, favorites, media viewing, and local reading history.</p>
+              <p class="project-description" data-i18n="tiebaDescription">An unofficial Baidu Tieba Android client built natively with Kotlin and Jetpack Compose, supporting browsing, search, favorites, media viewing, and local reading history.</p>
             </article>
 
             <article class="project-entry">
               <h3 class="project-title">
                 <a href="https://github.com/CHOS1N11111/Adaptive-Strategic-AI-mod-for-Civilization-VI" target="_blank" rel="noopener noreferrer">Adaptive Strategic AI mod for Civilization VI</a>
               </h3>
-              <p class="project-description">A Gathering Storm AI overhaul with speed-normalized difficulty, player-relative adaptive strategy, economic diagnostics, and auditable decision tuning, designed to keep every AI competitive and make single-player feel closer to a dynamic PvP match.</p>
+              <p class="project-description" data-i18n="civilizationDescription">A Civilization VI: Gathering Storm AI overhaul for adaptive strategy, stronger military execution, and a competitive Deity game from opening to victory.</p>
             </article>
 
             <article class="project-entry">
               <h3 class="project-title">
                 <a href="https://github.com/CHOS1N11111/RepoPilot-Agent" target="_blank" rel="noopener noreferrer">RepoPilot Agent</a>
               </h3>
-              <p class="project-description">An AI-powered coding workflow agent that turns repository tasks into plans, patch proposals, GitHub-aware diffs, validation feedback, and human-approved edits.</p>
+              <p class="project-description" data-i18n="repoPilotDescription">An AI-powered coding workflow agent that turns repository tasks into plans, patch proposals, GitHub-aware diffs, validation feedback, and human-approved edits.</p>
             </article>
           </div>
         </section>
 
         <section class="content-section content-section-last" id="work-experience">
-          <h2>Work Experience</h2>
+          <h2 data-i18n="workExperience">Work Experience</h2>
         </section>
       </div>
     </main>
