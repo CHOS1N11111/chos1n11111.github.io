@@ -7,7 +7,135 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <main id="app"></main>
-    <script src="./script.js"></script>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="page-shell header-inner">
+        <a class="brand" href="#top" aria-label="Home">
+          <span class="placeholder brand-mark" aria-hidden="true"></span>
+          <span class="placeholder brand-name" aria-hidden="true"></span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#work" aria-label="Selected work">
+            <span class="placeholder nav-item nav-item-short" aria-hidden="true"></span>
+          </a>
+          <a href="#resume" aria-label="Resume">
+            <span class="placeholder nav-item" aria-hidden="true"></span>
+          </a>
+          <a href="#contact" aria-label="Contact">
+            <span class="placeholder nav-item nav-item-long" aria-hidden="true"></span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="intro-title">
+        <div class="page-shell hero-inner">
+          <h1 class="sr-only" id="intro-title">Introduction</h1>
+          <span class="placeholder hero-kicker" aria-hidden="true"></span>
+          <div class="hero-title" aria-hidden="true">
+            <span class="placeholder"></span>
+            <span class="placeholder"></span>
+          </div>
+          <div class="hero-summary" aria-hidden="true">
+            <span class="placeholder"></span>
+            <span class="placeholder"></span>
+          </div>
+          <span class="placeholder hero-action" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="section work-section" id="work" aria-labelledby="work-title">
+        <div class="page-shell">
+          <h2 class="sr-only" id="work-title">Selected work</h2>
+          <div class="section-heading" aria-hidden="true">
+            <span class="placeholder section-title"></span>
+            <span class="placeholder section-note"></span>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card" aria-label="Project placeholder">
+              <div class="project-media" aria-hidden="true"></div>
+              <div class="project-copy" aria-hidden="true">
+                <span class="placeholder project-title"></span>
+                <span class="placeholder project-line"></span>
+                <span class="placeholder project-line project-line-short"></span>
+              </div>
+            </article>
+
+            <article class="project-card" aria-label="Project placeholder">
+              <div class="project-media" aria-hidden="true"></div>
+              <div class="project-copy" aria-hidden="true">
+                <span class="placeholder project-title"></span>
+                <span class="placeholder project-line"></span>
+                <span class="placeholder project-line project-line-short"></span>
+              </div>
+            </article>
+
+            <article class="project-card" aria-label="Project placeholder">
+              <div class="project-media" aria-hidden="true"></div>
+              <div class="project-copy" aria-hidden="true">
+                <span class="placeholder project-title"></span>
+                <span class="placeholder project-line"></span>
+                <span class="placeholder project-line project-line-short"></span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section resume-section" id="resume" aria-labelledby="resume-title">
+        <div class="page-shell">
+          <h2 class="sr-only" id="resume-title">Resume</h2>
+          <div class="section-heading" aria-hidden="true">
+            <span class="placeholder section-title"></span>
+            <span class="placeholder section-note"></span>
+          </div>
+
+          <div class="resume-list" aria-hidden="true">
+            <div class="resume-row">
+              <span class="placeholder resume-date"></span>
+              <div class="resume-copy">
+                <span class="placeholder resume-title"></span>
+                <span class="placeholder resume-detail"></span>
+              </div>
+            </div>
+            <div class="resume-row">
+              <span class="placeholder resume-date"></span>
+              <div class="resume-copy">
+                <span class="placeholder resume-title"></span>
+                <span class="placeholder resume-detail"></span>
+              </div>
+            </div>
+            <div class="resume-row">
+              <span class="placeholder resume-date"></span>
+              <div class="resume-copy">
+                <span class="placeholder resume-title"></span>
+                <span class="placeholder resume-detail"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact" aria-labelledby="contact-title">
+      <div class="page-shell footer-inner">
+        <h2 class="sr-only" id="contact-title">Contact</h2>
+        <div class="footer-message" aria-hidden="true">
+          <span class="placeholder"></span>
+          <span class="placeholder"></span>
+        </div>
+        <div class="footer-links" aria-hidden="true">
+          <span class="placeholder"></span>
+          <span class="placeholder"></span>
+          <span class="placeholder"></span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./script.js" defer></script>
   </body>
 </html>
