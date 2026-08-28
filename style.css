@@ -176,6 +176,12 @@ a:focus-visible {
   margin-bottom: 0.4rem;
 }
 
+.profile-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
 .profile-details a {
   display: inline-flex;
   align-items: center;
@@ -186,9 +192,10 @@ a:focus-visible {
 
 .profile-icon {
   display: block;
-  width: 0.875rem;
-  height: 0.875rem;
-  flex: 0 0 0.875rem;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 1rem;
+  object-fit: contain;
 }
 
 .profile-details a:hover,
@@ -216,16 +223,10 @@ a:focus-visible {
   min-height: 12rem;
 }
 
-h1,
 h2 {
   color: var(--heading);
   font-weight: 700;
   line-height: 1.2;
-}
-
-h1 {
-  margin: 0 0 1.25rem;
-  font-size: 1.55rem;
 }
 
 h2 {
@@ -233,6 +234,39 @@ h2 {
   padding-bottom: 0.5rem;
   font-size: 1.25rem;
   border-bottom: 1px solid var(--border);
+}
+
+.project-list {
+  margin-top: 0.75rem;
+}
+
+.project-entry {
+  padding-block: 1.15rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.project-title a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.project-title a:hover,
+.project-title a:focus-visible {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.project-description {
+  max-width: 52rem;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .site-footer {

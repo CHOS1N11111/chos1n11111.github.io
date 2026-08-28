@@ -12,7 +12,7 @@
 
     <header class="masthead">
       <div class="masthead-inner">
-        <a class="site-title" href="#about">CHOS1N11111</a>
+        <a class="site-title" href="#education">CHOS1N11111</a>
 
         <button
           class="menu-toggle"
@@ -27,10 +27,9 @@
         </button>
 
         <nav class="site-navigation" id="site-navigation" aria-label="Primary navigation">
-          <a href="#about">About</a>
+          <a href="#education">Education</a>
           <a href="#projects">Projects</a>
-          <a href="#resume">Resume</a>
-          <a href="#contact">Contact</a>
+          <a href="#work-experience">Work Experience</a>
         </nav>
       </div>
     </header>
@@ -41,22 +40,31 @@
         <div class="profile-content">
           <p class="profile-bio">B.E. in Artificial Intelligence, Tongji University</p>
           <ul class="profile-details">
-            <li>Shanghai, China</li>
+            <li class="profile-location">
+              <img class="profile-icon" src="./assets/icons/location.svg" alt="" width="16" height="16">
+              <span>Shanghai, China</span>
+            </li>
             <li>
               <a href="mailto:zhuzenan02@gmail.com" aria-label="Gmail zhuzenan02@gmail.com">
-                <img class="profile-icon" src="https://cdn.simpleicons.org/gmail" alt="" width="14" height="14">
+                <img class="profile-icon" src="./assets/icons/gmail.png" alt="" width="16" height="16">
                 <span>Gmail</span>
               </a>
             </li>
             <li>
               <a href="https://github.com/CHOS1N11111" target="_blank" rel="noopener noreferrer">
-                <img class="profile-icon" src="https://cdn.simpleicons.org/github" alt="" width="14" height="14">
+                <img class="profile-icon" src="./assets/icons/github.svg" alt="" width="16" height="16">
                 <span>GitHub</span>
               </a>
             </li>
             <li>
+              <a href="https://www.linkedin.com/in/zenan-zhu/" target="_blank" rel="noopener noreferrer">
+                <img class="profile-icon" src="./assets/icons/linkedin.png" alt="" width="16" height="16">
+                <span>LinkedIn</span>
+              </a>
+            </li>
+            <li>
               <a href="https://orcid.org/0009-0003-7449-8825" target="_blank" rel="noopener noreferrer">
-                <img class="profile-icon" src="https://cdn.simpleicons.org/orcid" alt="" width="14" height="14">
+                <img class="profile-icon" src="./assets/icons/orcid.gif" alt="" width="16" height="16">
                 <span>ORCID</span>
               </a>
             </li>
@@ -65,20 +73,39 @@
       </aside>
 
       <div class="page-content">
-        <section class="content-section content-section-first" id="about">
-          <h1>About</h1>
+        <section class="content-section content-section-first" id="education">
+          <h2>Education</h2>
         </section>
 
-        <section class="content-section" id="projects">
+        <section class="content-section projects-section" id="projects">
           <h2>Projects</h2>
+
+          <div class="project-list">
+            <article class="project-entry">
+              <h3 class="project-title">
+                <a href="https://github.com/infinityf4p/TiebaPure-Android" target="_blank" rel="noopener noreferrer">TiebaPure Android</a>
+              </h3>
+              <p class="project-description">An unofficial Baidu Tieba client built natively with Kotlin and Jetpack Compose, supporting browsing, search, favorites, media viewing, and local reading history.</p>
+            </article>
+
+            <article class="project-entry">
+              <h3 class="project-title">
+                <a href="https://github.com/CHOS1N11111/Adaptive-Strategic-AI-mod-for-Civilization-VI" target="_blank" rel="noopener noreferrer">Adaptive Strategic AI mod for Civilization VI</a>
+              </h3>
+              <p class="project-description">A Gathering Storm AI overhaul with speed-normalized difficulty, player-relative adaptive strategy, economic diagnostics, and auditable decision tuning, designed to keep every AI competitive and make single-player feel closer to a dynamic PvP match.</p>
+            </article>
+
+            <article class="project-entry">
+              <h3 class="project-title">
+                <a href="https://github.com/CHOS1N11111/RepoPilot-Agent" target="_blank" rel="noopener noreferrer">RepoPilot Agent</a>
+              </h3>
+              <p class="project-description">An AI-powered coding workflow agent that turns repository tasks into plans, patch proposals, GitHub-aware diffs, validation feedback, and human-approved edits.</p>
+            </article>
+          </div>
         </section>
 
-        <section class="content-section" id="resume">
-          <h2>Resume</h2>
-        </section>
-
-        <section class="content-section content-section-last" id="contact">
-          <h2>Contact</h2>
+        <section class="content-section content-section-last" id="work-experience">
+          <h2>Work Experience</h2>
         </section>
       </div>
     </main>

@@ -4,4 +4,4 @@ Source repository for the personal website of [CHOS1N11111](https://github.com/C
 
 ## Website
 
-The site will be published at [chos1n11111.github.io](https://chos1n11111.github.io/).
+The site is published at [chos1n11111.github.io](https://chos1n11111.github.io/).
