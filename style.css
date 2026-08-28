@@ -158,7 +158,33 @@ a:focus-visible {
 }
 
 .profile-content {
-  min-height: 4rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.profile-bio {
+  margin: 0 0 1.25rem;
+}
+
+.profile-details {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-details li {
+  margin-bottom: 0.4rem;
+}
+
+.profile-details a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.profile-details a:hover,
+.profile-details a:focus-visible {
+  color: var(--link-hover);
+  text-decoration: underline;
 }
 
 .page-content {
@@ -208,7 +234,7 @@ h2 {
 @media (min-width: 64rem) {
   .page {
     display: grid;
-    grid-template-columns: 14rem minmax(0, 1fr);
+    grid-template-columns: 12rem minmax(0, 1fr);
     gap: 4rem;
   }
 
