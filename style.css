@@ -164,10 +164,6 @@ a:focus-visible {
   line-height: 1.5;
 }
 
-.profile-bio {
-  margin: 0 0 0.4rem;
-}
-
 .profile-details {
   margin: 0;
   padding: 0;
@@ -285,23 +281,27 @@ h2 {
   border-bottom: 1px solid var(--border);
 }
 
-.education-list {
+.education-list,
+.work-experience-list {
   margin-top: 0.75rem;
 }
 
-.education-entry {
+.education-entry,
+.work-experience-entry {
   padding-block: 1.15rem 1.25rem;
   border-bottom: 1px solid var(--border);
 }
 
-.education-entry-header {
+.education-entry-header,
+.work-experience-entry-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
   gap: 1rem;
 }
 
-.education-institution {
+.education-institution,
+.work-experience-company {
   min-width: 0;
   margin: 0;
   color: var(--heading);
@@ -309,7 +309,8 @@ h2 {
   line-height: 1.35;
 }
 
-.education-period {
+.education-period,
+.work-experience-period {
   margin: 0;
   color: #73787c;
   font-size: 0.8rem;
@@ -317,55 +318,65 @@ h2 {
   white-space: nowrap;
 }
 
-.education-degree {
+.education-entry-details,
+.work-experience-entry-details {
+  min-width: 0;
+}
+
+.education-degree,
+.work-experience-position {
   margin: 0.4rem 0 0;
   font-size: 0.9rem;
   line-height: 1.5;
 }
 
-.education-affiliation-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: 1rem;
-  margin-top: 0.15rem;
+.education-entry-timing {
+  text-align: right;
 }
 
-.education-affiliation,
-.education-location {
+.education-entry-location {
   margin: 0;
+  color: #73787c;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.education-affiliation {
+  margin: 0.15rem 0 0;
   color: #73787c;
   font-size: 0.8rem;
   line-height: 1.5;
 }
 
-.education-location {
-  text-align: right;
-  white-space: nowrap;
-}
-
-.project-list {
+.project-list,
+.research-output-list {
   margin-top: 0.75rem;
 }
 
-.project-entry {
+.project-entry,
+.research-output-entry {
   padding-block: 1.15rem 1.25rem;
   border-bottom: 1px solid var(--border);
 }
 
-.project-title {
+.project-title,
+.research-output-title {
   margin: 0 0 0.4rem;
   font-size: 1.05rem;
   line-height: 1.35;
 }
 
-.project-title a {
+.project-title a,
+.research-output-title a {
   color: var(--link);
   text-decoration: none;
 }
 
 .project-title a:hover,
-.project-title a:focus-visible {
+.project-title a:focus-visible,
+.research-output-title a:hover,
+.research-output-title a:focus-visible {
   color: var(--link-hover);
   text-decoration: underline;
 }
@@ -375,6 +386,37 @@ h2 {
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.55;
+}
+
+.research-output-authors,
+.research-output-venue,
+.research-output-doi {
+  max-width: 58rem;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.research-output-authors strong {
+  color: var(--heading);
+}
+
+.research-output-venue {
+  margin-top: 0.25rem;
+  color: #73787c;
+}
+
+.research-output-doi {
+  margin-top: 0.4rem;
+}
+
+.research-output-doi a {
+  text-decoration: none;
+}
+
+.research-output-doi a:hover,
+.research-output-doi a:focus-visible {
+  text-decoration: underline;
 }
 
 .site-footer {
