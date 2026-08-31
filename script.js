@@ -17,6 +17,8 @@ const translations = {
     education: "Education",
     projects: "Projects",
     workExperience: "Work Experience",
+    workLocation: "Shanghai, China",
+    internshipType: "Internship",
     researchOutputs: "Research Outputs",
     profileLocation: "Shanghai, China",
     tongjiUniversity: "Tongji University",
@@ -51,6 +53,8 @@ const translations = {
     education: "教育经历",
     projects: "项目经历",
     workExperience: "工作经历",
+    workLocation: "中国上海",
+    internshipType: "实习",
     researchOutputs: "研究成果",
     profileLocation: "中国上海",
     tongjiUniversity: "同济大学",
@@ -71,7 +75,7 @@ const translations = {
     cailiPosition: "算法实习生",
     cailiPeriod: "2025.08–2025.10",
     tiebaDescription: "原生 Kotlin 与 Jetpack Compose 构建的非官方贴吧 Android 客户端，支持浏览、搜索、收藏、媒体查看与本地阅读记录。",
-    civilizationDescription: "一款针对 Civilization VI: Gathering Storm 的 AI 改进模组，旨在实现自适应战略、提升军事执行力，并让 Deity 难度从开局到胜利都保持竞争性。",
+    civilizationDescription: "一款针对 Civilization VI: Gathering Storm 的 AI 改进模组，旨在实现自适应战略、提升军事执行力，并让神级难度从开局到胜利都保持竞争性。",
     repoPilotDescription: "一个由 AI 驱动的编程工作流智能体，可将仓库任务转化为计划、补丁提案、GitHub-aware diffs、验证反馈和经人工批准的编辑。"
   }
 };
