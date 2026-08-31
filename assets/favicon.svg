@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Z">
+  <title>Z</title>
+  <rect width="64" height="64" fill="#ffffff"/>
+  <path
+    d="M24 0V53L386 619L372 571V602L245 594H107L152 630L114 464H36L42 657H564V605L202 38L216 85V55L346 63H506L460 27L498 193H577L571 0Z"
+    fill="#365b5e"
+    transform="translate(10.36 56) scale(.072 -.072)"
+  />
+</svg>
