@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <meta name="description" content="Project page for RepoPilot Agent.">
+    <meta name="author" content="CHOS1N11111">
+    <meta name="application-name" content="CHOS1N11111">
+    <title>RepoPilot Agent | CHOS1N11111</title>
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:wght@600&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="skipToContent">Skip to content</a>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Open navigation">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+
+        <nav class="site-navigation" id="site-navigation" aria-label="Primary navigation" data-i18n-aria-label="primaryNavigation">
+          <a href="../../index.html#education" data-preserve-language data-i18n="education">Education</a>
+          <a href="../../index.html#work-experience" data-preserve-language data-i18n="workExperience">Work Experience</a>
+          <a href="../../index.html#projects" data-preserve-language data-i18n="projects">Projects</a>
+          <a href="../../index.html#research-outputs" data-preserve-language data-i18n="researchOutputs">Research Outputs</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page project-page" id="main-content">
+      <aside class="profile-sidebar" aria-label="Personal profile" data-i18n-aria-label="personalProfile">
+        <p class="profile-name" data-i18n="profileName">Zhu Zenan</p>
+        <div class="profile-content">
+          <ul class="profile-details">
+            <li class="profile-location">
+              <img class="profile-icon" src="../../assets/icons/location.svg" alt="" width="16" height="16">
+              <span data-i18n="profileLocation">Shanghai, China</span>
+            </li>
+            <li>
+              <a href="mailto:zhuzenan02@gmail.com" aria-label="Gmail zhuzenan02@gmail.com">
+                <img class="profile-icon" src="../../assets/icons/gmail.png" alt="" width="16" height="16">
+                <span>Gmail</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/CHOS1N11111" target="_blank" rel="noopener noreferrer">
+                <img class="profile-icon" src="../../assets/icons/github.svg" alt="" width="16" height="16">
+                <span>GitHub</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/zenan-zhu/" target="_blank" rel="noopener noreferrer">
+                <img class="profile-icon" src="../../assets/icons/linkedin.png" alt="" width="16" height="16">
+                <span>LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://orcid.org/0009-0003-7449-8825" target="_blank" rel="noopener noreferrer">
+                <img class="profile-icon" src="../../assets/icons/orcid.gif" alt="" width="16" height="16">
+                <span>ORCID</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="language-switcher language-switcher-sidebar" role="group" aria-label="Language" data-i18n-aria-label="languageSwitcher">
+          <button class="language-option" type="button" data-language="en" aria-pressed="true" lang="en">English</button>
+          <button class="language-option" type="button" data-language="zh-CN" aria-pressed="false" lang="zh-CN">中文</button>
+        </div>
+      </aside>
+
+      <div class="page-content">
+        <article class="project-detail">
+          <a class="project-back" href="../../index.html#projects" data-preserve-language>
+            <span aria-hidden="true">&larr;</span>
+            <span data-i18n="backToProjects">Back to Projects</span>
+          </a>
+
+          <p class="project-kicker" data-i18n="projectDetails">Project Details</p>
+          <div class="project-detail-heading">
+            <h1 class="project-detail-title">RepoPilot Agent</h1>
+            <span class="project-role" data-i18n="roleMaintainer">Maintainer</span>
+          </div>
+
+          <nav class="project-actions" aria-label="Project links" data-i18n-aria-label="projectActions">
+            <a href="https://github.com/CHOS1N11111/RepoPilot-Agent" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </nav>
+
+          <section class="project-detail-section">
+            <h2 data-i18n="projectOverviewHeading">Overview</h2>
+            <p class="project-overview" data-i18n="repoPilotProjectOverview">RepoPilot Agent is a local, approval-first coding Agent that converts repository tasks and GitHub issues into reviewable change proposals. It builds context from files, symbols, imports, Git state, and source-test relationships, then uses deterministic planning or an OpenAI-compatible LLM to produce plans, virtual diffs, and validation feedback. Writes happen only inside managed worktrees after exact human approval, with bounded repair, checkpoints, restart-safe recovery, and rollback evidence; the CLI and local Web UI also inspect GitHub issues, pull requests, reviews, comments, and CI status. RepoPilot never commits or pushes task changes automatically.</p>
+          </section>
+        </article>
+      </div>
+
+      <div class="language-switcher language-switcher-mobile" role="group" aria-label="Language" data-i18n-aria-label="languageSwitcher">
+        <button class="language-option" type="button" data-language="en" aria-pressed="true" lang="en">English</button>
+        <button class="language-option" type="button" data-language="zh-CN" aria-pressed="false" lang="zh-CN">中文</button>
+      </div>
+    </main>
+
+    <script src="../../script.js" defer></script>
+  </body>
+</html>

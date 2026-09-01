@@ -2,7 +2,17 @@
 
 const menuToggle = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".site-navigation");
-const languageSwitcher = document.querySelector(".language-switcher");
+const masthead = document.querySelector(".masthead");
+const navigationItems = Array.from(navigation.querySelectorAll("a[href*='#']"), (link) => {
+  const sectionId = new URL(link.getAttribute("href"), document.baseURI).hash.slice(1);
+  return {
+    link,
+    sectionId,
+    section: document.getElementById(sectionId)
+  };
+});
+const navigationSections = navigationItems.filter((item) => item.section);
+const languageSwitchers = document.querySelectorAll(".language-switcher");
 const languageOptions = document.querySelectorAll(".language-option");
 const languageLinks = document.querySelectorAll("[data-preserve-language]");
 const citationCopyButton = document.querySelector("[data-copy-citation]");
@@ -24,6 +34,21 @@ const translations = {
     workExperience: "Work Experience",
     workLocation: "Shanghai, China",
     researchOutputs: "Research Outputs",
+    projectDetails: "Project Details",
+    backToProjects: "Back to Projects",
+    projectActions: "Project links",
+    projectOverviewHeading: "Overview",
+    projectScreenshotsHeading: "Screenshots",
+    dongqiudiProjectOverview: "DongqiudiPure Android is a lightweight, unofficial Dongqiudi client built natively with Kotlin and Jetpack Compose. It focuses on a clean Android browsing experience while keeping account-dependent features optional. The project is distributed under GPL-3.0-only and is independent of Dongqiudi and its official operator.",
+    tiebaProjectOverview: "TiebaPure Android is a native Kotlin and Jetpack Compose client for Baidu Tieba that follows Android conventions for navigation, gestures, media, storage, and adaptive layouts. Visitors can browse recommendations, forums, search results, threads, nested replies, images, and videos without signing in; signed-in users can access messages, follows, favorites, check-ins, likes, posting, replies, and profile editing. Local features include filtering, history and reading-position recovery, offline thread storage, responsive phone and tablet layouts, custom reading fonts, and deep links. Posting, replies, and profile editing are experimental features that must be enabled explicitly.",
+    civilizationProjectOverview: "Adaptive Strategic AI is a Gathering Storm AI overhaul designed to keep Deity games competitive from the opening through the victory screen. It replaces much of vanilla Deity's front-loaded spike with an era-scaled difficulty curve, while each major AI independently adjusts development, recovery, expansion, defense, pressure, and war plans based on its position and recent trend. The mod strengthens settlement, economy, military readiness, city assaults, wartime production, and victory-specific priorities, while limiting recovery bonuses to AIs with confirmed broad or severe deficits. It does not spawn units or grant technologies, civics, resources, cities, or stored progress.",
+    repoPilotProjectOverview: "RepoPilot Agent is a local, approval-first coding Agent that converts repository tasks and GitHub issues into reviewable change proposals. It builds context from files, symbols, imports, Git state, and source-test relationships, then uses deterministic planning or an OpenAI-compatible LLM to produce plans, virtual diffs, and validation feedback. Writes happen only inside managed worktrees after exact human approval, with bounded repair, checkpoints, restart-safe recovery, and rollback evidence; the CLI and local Web UI also inspect GitHub issues, pull requests, reviews, comments, and CI status. RepoPilot never commits or pushes task changes automatically.",
+    tiebaScreenshotHome: "Guest home",
+    tiebaScreenshotThread: "Guest thread details",
+    tiebaScreenshotFavorites: "Signed-in favorites",
+    tiebaScreenshotSearch: "Guest search",
+    tiebaScreenshotReplies: "Guest replies",
+    tiebaScreenshotSettings: "Signed-in settings",
     publicationDetails: "Publication Details",
     backToResearchOutputs: "Back to Research Outputs",
     publicationActions: "Publication links",
@@ -54,6 +79,7 @@ const translations = {
     tiebaDescription: "An unofficial Baidu Tieba Android client built natively with Kotlin and Jetpack Compose, supporting browsing, search, favorites, media viewing, and local reading history.",
     civilizationDescription: "A Civilization VI: Gathering Storm AI overhaul for adaptive strategy, stronger military execution, and a competitive Deity game from opening to victory.",
     repoPilotDescription: "An AI-powered coding workflow agent that turns repository tasks into plans, patch proposals, GitHub-aware diffs, validation feedback, and human-approved edits.",
+    dongqiudiDescription: "A lightweight, unofficial Dongqiudi client for Android, focused on clean browsing with optional account features.",
     roleCollaborator: "Collaborator",
     roleMaintainer: "Maintainer"
   },
@@ -70,6 +96,21 @@ const translations = {
     workExperience: "工作经历",
     workLocation: "中国上海",
     researchOutputs: "研究成果",
+    projectDetails: "项目详情",
+    backToProjects: "返回项目经历",
+    projectActions: "项目链接",
+    projectOverviewHeading: "项目介绍",
+    projectScreenshotsHeading: "截图",
+    dongqiudiProjectOverview: "DongqiudiPure Android 是一款使用 Kotlin 和 Jetpack Compose 原生构建的轻量级第三方懂球帝 Android 客户端。项目专注于简洁的浏览体验，并将依赖账户的功能保持为可选项。项目以 GPL-3.0-only 发布，与懂球帝及其官方运营方不存在隶属、授权或认可关系。",
+    tiebaProjectOverview: "TiebaPure Android 是使用 Kotlin 与 Jetpack Compose 原生构建的第三方百度贴吧客户端，导航、手势、媒体播放、存储和自适应布局遵循 Android 平台惯例。未登录时可浏览推荐、贴吧列表、搜索结果、帖子、楼中楼、图片与视频；登录后可使用消息、关注、收藏同步、签到、点赞、发帖、回复和资料编辑等功能。本机功能还包括内容屏蔽、浏览历史与阅读位置恢复、帖子离线保存、手机和平板自适应布局、自定义阅读字体与深链接；发帖、回复和资料编辑目前仍是需要显式启用的实验性功能。",
+    civilizationProjectOverview: "Adaptive Strategic AI 是一款面向 Gathering Storm 规则集的 AI 改进模组，目标是让神级难度从开局到胜利阶段都保持竞争性。它以随时代增长的难度曲线替代原版神级难度过度集中的前期压力，并让每个主要 AI 根据自身位置与近期趋势独立调整发展、恢复、扩张、防御、施压和战争计划。模组强化了定居、经济、军事准备、攻城、战时生产和不同胜利路线的执行，同时只向经确认存在广泛或严重落后情况的 AI 提供有限恢复支持。它不会生成单位，也不会直接授予科技、市政、资源、城市或已储存的进度。",
+    repoPilotProjectOverview: "RepoPilot Agent 是一个本地运行、以审批为先的编程 Agent，可将仓库任务和 GitHub Issue 转化为可审查的代码变更提案。它从文件、符号、导入关系、Git 状态以及源码与测试的关系中构建上下文，再通过确定性规则或 OpenAI-compatible LLM 生成计划、虚拟 diff 和验证反馈。写入仅会在获得精确人工批准后发生于受管理的 worktree 中，并配有有限修复、检查点、可恢复执行和回滚证据；CLI 与本地 Web UI 还可检查 GitHub Issue、Pull Request、Review、评论和 CI 状态。RepoPilot 不会自动提交或推送任务变更。",
+    tiebaScreenshotHome: "未登录访客首页",
+    tiebaScreenshotThread: "未登录访客帖子详情",
+    tiebaScreenshotFavorites: "登录后的帖子收藏",
+    tiebaScreenshotSearch: "未登录访客搜索",
+    tiebaScreenshotReplies: "未登录访客回复",
+    tiebaScreenshotSettings: "登录后的设置",
     publicationDetails: "论文详情",
     backToResearchOutputs: "返回研究成果",
     publicationActions: "论文链接",
@@ -100,6 +141,7 @@ const translations = {
     tiebaDescription: "原生 Kotlin 与 Jetpack Compose 构建的非官方贴吧 Android 客户端，支持浏览、搜索、收藏、媒体查看与本地阅读记录。",
     civilizationDescription: "一款针对 Civilization VI: Gathering Storm 的 AI 改进模组，旨在实现自适应战略、提升军事执行力，并让神级难度从开局到胜利都保持竞争性。",
     repoPilotDescription: "一个由 AI 驱动的编程工作流 Agent，可将仓库任务转化为计划、补丁提案、GitHub-aware diffs、验证反馈和经人工批准的编辑。",
+    dongqiudiDescription: "一款轻量级的非官方懂球帝 Android 客户端，专注于简洁浏览，并提供可选的账户功能。",
     roleCollaborator: "协作者",
     roleMaintainer: "维护者"
   }
@@ -140,6 +182,61 @@ const setMenuOpen = (isOpen) => {
   updateMenuLabel();
 };
 
+const setCurrentNavigation = (sectionId) => {
+  navigationItems.forEach((item) => {
+    if (item.sectionId === sectionId) {
+      item.link.setAttribute("aria-current", "location");
+    } else {
+      item.link.removeAttribute("aria-current");
+    }
+  });
+};
+
+const updateCurrentNavigation = () => {
+  if (!navigationSections.length) {
+    if (document.querySelector(".project-page")) {
+      setCurrentNavigation("projects");
+    } else if (document.querySelector(".publication-page")) {
+      setCurrentNavigation("research-outputs");
+    }
+    return;
+  }
+
+  const hashSectionId = window.location.hash.slice(1);
+  const hashItem = navigationSections.find((item) => item.sectionId === hashSectionId);
+  if (hashItem) {
+    const hashSectionRect = hashItem.section.getBoundingClientRect();
+    const hashSectionVisible = hashSectionRect.bottom > masthead.offsetHeight && hashSectionRect.top < window.innerHeight;
+    if (hashSectionVisible) {
+      setCurrentNavigation(hashItem.sectionId);
+      return;
+    }
+  }
+
+  const activationLine = masthead.offsetHeight + Math.min(240, window.innerHeight * 0.25);
+  let currentItem = navigationSections[0];
+
+  navigationSections.forEach((item) => {
+    if (item.section.getBoundingClientRect().top <= activationLine) {
+      currentItem = item;
+    }
+  });
+
+  setCurrentNavigation(currentItem.sectionId);
+};
+
+let navigationUpdateFrame;
+const queueCurrentNavigationUpdate = () => {
+  if (navigationUpdateFrame) {
+    return;
+  }
+
+  navigationUpdateFrame = window.requestAnimationFrame(() => {
+    navigationUpdateFrame = undefined;
+    updateCurrentNavigation();
+  });
+};
+
 const updateLanguageLinks = (language) => {
   languageLinks.forEach((link) => {
     if (!link.dataset.baseHref) {
@@ -178,6 +275,13 @@ const setLanguage = (language) => {
     }
   });
 
+  document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+    const translation = translations[language][element.dataset.i18nAlt];
+    if (typeof translation === "string") {
+      element.setAttribute("alt", translation);
+    }
+  });
+
   languageOptions.forEach((option) => {
     option.setAttribute("aria-pressed", String(option.dataset.language === language));
   });
@@ -185,6 +289,7 @@ const setLanguage = (language) => {
   updateLanguageLinks(language);
   updateMenuLabel();
   updateCitationCopyFeedback();
+  queueCurrentNavigationUpdate();
 };
 
 const updateLanguageUrl = (language) => {
@@ -207,17 +312,28 @@ menuToggle.addEventListener("click", () => {
 });
 
 navigation.addEventListener("click", (event) => {
-  if (event.target.closest("a")) {
+  const link = event.target.closest("a");
+  if (link) {
+    const sectionId = new URL(link.getAttribute("href"), document.baseURI).hash.slice(1);
+    if (document.getElementById(sectionId)) {
+      setCurrentNavigation(sectionId);
+    }
     setMenuOpen(false);
   }
 });
 
-languageSwitcher.addEventListener("click", (event) => {
-  const option = event.target.closest(".language-option");
-  if (option) {
-    setLanguage(option.dataset.language);
-    updateLanguageUrl(option.dataset.language);
-  }
+window.addEventListener("scroll", queueCurrentNavigationUpdate, { passive: true });
+window.addEventListener("resize", queueCurrentNavigationUpdate);
+window.addEventListener("hashchange", queueCurrentNavigationUpdate);
+
+languageSwitchers.forEach((languageSwitcher) => {
+  languageSwitcher.addEventListener("click", (event) => {
+    const option = event.target.closest(".language-option");
+    if (option) {
+      setLanguage(option.dataset.language);
+      updateLanguageUrl(option.dataset.language);
+    }
+  });
 });
 
 document.addEventListener("keydown", (event) => {

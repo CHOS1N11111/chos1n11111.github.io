@@ -11,7 +11,7 @@
     <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:wght@600&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
   </head>
   <body>
@@ -76,7 +76,7 @@
           </ul>
         </div>
 
-        <div class="language-switcher" role="group" aria-label="Language" data-i18n-aria-label="languageSwitcher">
+        <div class="language-switcher language-switcher-sidebar" role="group" aria-label="Language" data-i18n-aria-label="languageSwitcher">
           <button class="language-option" type="button" data-language="en" aria-pressed="true" lang="en">English</button>
           <button class="language-option" type="button" data-language="zh-CN" aria-pressed="false" lang="zh-CN">中文</button>
         </div>
@@ -121,6 +121,11 @@
             </div>
           </section>
         </article>
+      </div>
+
+      <div class="language-switcher language-switcher-mobile" role="group" aria-label="Language" data-i18n-aria-label="languageSwitcher">
+        <button class="language-option" type="button" data-language="en" aria-pressed="true" lang="en">English</button>
+        <button class="language-option" type="button" data-language="zh-CN" aria-pressed="false" lang="zh-CN">中文</button>
       </div>
     </main>
 
