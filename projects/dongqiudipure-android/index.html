@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
-    <meta name="description" content="Project page for DongqiudiPure Android.">
+    <meta name="description" content="DongqiudiPure Android is a lightweight, unofficial Dongqiudi client built with Kotlin and Jetpack Compose for a clean native Android experience.">
     <meta name="author" content="CHOS1N11111">
     <meta name="application-name" content="CHOS1N11111">
     <title>DongqiudiPure Android | CHOS1N11111</title>
@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:wght@600&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
   </head>
-  <body>
+  <body class="detail-page-body">
     <a class="skip-link" href="#main-content" data-i18n="skipToContent">Skip to content</a>
 
     <header class="masthead">
@@ -26,9 +26,10 @@
         </button>
 
         <nav class="site-navigation" id="site-navigation" aria-label="Primary navigation" data-i18n-aria-label="primaryNavigation">
+          <a href="../../index.html" data-preserve-language data-i18n="home">Home</a>
           <a href="../../index.html#education" data-preserve-language data-i18n="education">Education</a>
           <a href="../../index.html#work-experience" data-preserve-language data-i18n="workExperience">Work Experience</a>
-          <a href="../../index.html#projects" data-preserve-language data-i18n="projects">Projects</a>
+          <a href="../../index.html#projects" data-preserve-language data-i18n="projects">Featured Projects</a>
           <a href="../../index.html#research-outputs" data-preserve-language data-i18n="researchOutputs">Research Outputs</a>
         </nav>
       </div>
@@ -37,6 +38,7 @@
     <main class="page project-page" id="main-content">
       <aside class="profile-sidebar" aria-label="Personal profile" data-i18n-aria-label="personalProfile">
         <p class="profile-name" data-i18n="profileName">Zhu Zenan</p>
+        <p class="profile-summary" data-i18n="profileSummary">Undergraduate Student in Artificial Intelligence at Tongji University</p>
         <div class="profile-content">
           <ul class="profile-details">
             <li class="profile-location">
@@ -44,9 +46,15 @@
               <span data-i18n="profileLocation">Shanghai, China</span>
             </li>
             <li>
-              <a href="mailto:zhuzenan02@gmail.com" aria-label="Gmail zhuzenan02@gmail.com">
+              <a href="mailto:zhuzenanluke@gmail.com" aria-label="Gmail zhuzenanluke@gmail.com">
                 <img class="profile-icon" src="../../assets/icons/gmail.png" alt="" width="16" height="16">
                 <span>Gmail</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:zhuzenan@tongji.edu.cn" aria-label="Academic email zhuzenan@tongji.edu.cn">
+                <img class="profile-icon" src="../../assets/icons/email.svg" alt="" width="16" height="16">
+                <span>Academic Email</span>
               </a>
             </li>
             <li>
@@ -80,7 +88,7 @@
         <article class="project-detail">
           <a class="project-back" href="../../index.html#projects" data-preserve-language>
             <span aria-hidden="true">&larr;</span>
-            <span data-i18n="backToProjects">Back to Projects</span>
+            <span data-i18n="backToProjects">Back to Featured Projects</span>
           </a>
 
           <p class="project-kicker" data-i18n="projectDetails">Project Details</p>
@@ -89,8 +97,34 @@
             <span class="project-role" data-i18n="roleMaintainer">Maintainer</span>
           </div>
 
+          <dl class="project-detail-meta">
+            <div>
+              <dt data-i18n="projectStatusLabel">Status</dt>
+              <dd class="project-status-value" data-status="in-development" data-i18n="projectStatusInDevelopment">In Development</dd>
+            </div>
+            <div>
+              <dt data-i18n="projectPlatformLabel">Platform</dt>
+              <dd>Android</dd>
+            </div>
+            <div>
+              <dt data-i18n="projectRequiresLabel">Requires</dt>
+              <dd>Android 8.0+ (API 26)</dd>
+            </div>
+            <div>
+              <dt data-i18n="projectStackLabel">Stack</dt>
+              <dd>Kotlin / Jetpack Compose</dd>
+            </div>
+            <div>
+              <dt data-i18n="projectLicenseLabel">License</dt>
+              <dd><a href="https://github.com/CHOS1N11111/DongqiudiPure-Android/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">GPL-3.0-only</a></dd>
+            </div>
+          </dl>
+
           <nav class="project-actions" aria-label="Project links" data-i18n-aria-label="projectActions">
-            <a href="https://github.com/CHOS1N11111/DongqiudiPure-Android" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://github.com/CHOS1N11111/DongqiudiPure-Android" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="viewOnGitHub">View on GitHub</span>
+              <span class="external-link-mark" aria-hidden="true">↗</span>
+            </a>
           </nav>
 
           <section class="project-detail-section">

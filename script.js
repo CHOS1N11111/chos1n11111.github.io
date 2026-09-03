@@ -3,6 +3,86 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".site-navigation");
 const masthead = document.querySelector(".masthead");
+
+const navigationSubmenus = [
+  {
+    sectionId: "work-experience",
+    triggerId: "navigation-work",
+    items: [
+      { path: "work/smartsens/index.html", label: "SmartSens Technology (Shanghai) Co., Ltd.", translationKey: "smartSensCompany" },
+      { path: "work/unisound/index.html", label: "Unisound AI Technology Co., Ltd.", translationKey: "unisoundCompany" },
+      { path: "work/hrtps/index.html", label: "Shanghai Caili Network Co., Ltd.", translationKey: "cailiCompany" }
+    ]
+  },
+  {
+    sectionId: "projects",
+    triggerId: "navigation-projects",
+    items: [
+      { path: "projects/dongqiudipure-android/index.html", label: "DongqiudiPure Android" },
+      { path: "projects/tiebapure-android/index.html", label: "TiebaPure Android" },
+      { path: "projects/adaptive-strategic-ai-mod-for-civilization-vi/index.html", label: "Adaptive Strategic AI mod for Civilization VI" },
+      { path: "projects/repopilot-agent/index.html", label: "RepoPilot Agent" }
+    ]
+  },
+  {
+    sectionId: "research-outputs",
+    triggerId: "navigation-research",
+    alignEnd: true,
+    items: [
+      {
+        path: "publications/option-based-hierarchical-uav-networks/index.html",
+        label: "An Option-Based Hierarchical Approach for Dynamic Mobile Crowdsensing Over Edge-Assisted UAV Networks"
+      }
+    ]
+  }
+];
+
+const initializeNavigationSubmenus = () => {
+  const scriptElement = document.querySelector('script[src*="script.js"]');
+  const siteRootUrl = new URL(".", scriptElement.src);
+
+  navigationSubmenus.forEach(({ sectionId, triggerId, alignEnd, items }) => {
+    const trigger = navigation.querySelector(`a[href$="#${sectionId}"]`);
+    if (!trigger || trigger.closest(".navigation-item")) {
+      return;
+    }
+
+    const group = document.createElement("div");
+    group.className = alignEnd ? "navigation-item navigation-item-end" : "navigation-item";
+
+    const submenu = document.createElement("ul");
+    submenu.className = "navigation-submenu";
+    submenu.setAttribute("aria-labelledby", triggerId);
+    trigger.id = triggerId;
+
+    items.forEach(({ path, label, translationKey }) => {
+      const listItem = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = new URL(path, siteRootUrl).href;
+      link.textContent = label;
+      link.setAttribute("data-preserve-language", "");
+      if (translationKey) {
+        link.dataset.i18n = translationKey;
+      }
+      listItem.append(link);
+      submenu.append(listItem);
+    });
+
+    trigger.before(group);
+    group.append(trigger, submenu);
+  });
+
+  const currentPath = new URL(window.location.href).pathname.replace(/\/index\.html$/, "/");
+  navigation.querySelectorAll(".navigation-submenu a").forEach((link) => {
+    const linkPath = new URL(link.href).pathname.replace(/\/index\.html$/, "/");
+    if (linkPath === currentPath) {
+      link.setAttribute("aria-current", "page");
+    }
+  });
+};
+
+initializeNavigationSubmenus();
+
 const navigationItems = Array.from(navigation.querySelectorAll("a[href*='#']"), (link) => {
   const sectionId = new URL(link.getAttribute("href"), document.baseURI).hash.slice(1);
   return {
@@ -29,14 +109,37 @@ const translations = {
     personalProfile: "Personal profile",
     languageSwitcher: "Language",
     profileName: "Zhu Zenan",
+    profileSummary: "Undergraduate Student in Artificial Intelligence at Tongji University",
+    home: "Home",
     education: "Education",
-    projects: "Projects",
+    projects: "Featured Projects",
     workExperience: "Work Experience",
     workLocation: "Shanghai, China",
+    workDetails: "Work Experience Details",
+    backToWorkExperience: "Back to Work Experience",
+    workActions: "Company links",
+    companyWebsite: "Company website",
+    workPeriodLabel: "Period",
+    workLocationLabel: "Location",
+    workOverviewHeading: "Overview",
+    workTechnologiesHeading: "Technologies",
     researchOutputs: "Research Outputs",
     projectDetails: "Project Details",
-    backToProjects: "Back to Projects",
+    backToProjects: "Back to Featured Projects",
     projectActions: "Project links",
+    viewOnGitHub: "View on GitHub",
+    latestRelease: "Latest release",
+    projectStatusLabel: "Status",
+    projectPlatformLabel: "Platform",
+    projectVersionLabel: "Version",
+    projectRequiresLabel: "Requires",
+    projectStackLabel: "Stack",
+    projectInterfaceLabel: "Interface",
+    projectLicenseLabel: "License",
+    projectStatusInDevelopment: "In Development",
+    projectStatusReleased: "Released",
+    projectStatusPreRelease: "Pre-release",
+    projectStatusPrototype: "Prototype",
     projectOverviewHeading: "Overview",
     projectScreenshotsHeading: "Screenshots",
     dongqiudiProjectOverview: "DongqiudiPure Android is a lightweight, unofficial Dongqiudi client built natively with Kotlin and Jetpack Compose. It focuses on a clean Android browsing experience while keeping account-dependent features optional. The project is distributed under GPL-3.0-only and is independent of Dongqiudi and its official operator.",
@@ -69,12 +172,22 @@ const translations = {
     highSchoolLocation: "Shanghai, China",
     smartSensCompany: "SmartSens Technology (Shanghai) Co., Ltd.",
     smartSensPosition: "Software Development Intern",
+    smartSensDetailPosition: "Software Development Intern",
+    smartSensDepartment: "Applications Department",
+    smartSensDetailLocation: "Minhang District, Shanghai, China",
+    smartSensWorkOverview: "As a Software Development Intern in the Applications Department, I developed a domain-specific Agent that converts natural-language test requests into validated, executable workflows by grounding model planning in registered testing capabilities and applying deterministic checks to parameters, cross-step data dependencies, and device state before execution. It has been validated across standard and custom scenarios. I also built a visual desktop application for creating, running, and inspecting workflows in one place, which is used internally.",
     smartSensPeriod: "Jul 2026 – Present",
     unisoundCompany: "Unisound AI Technology Co., Ltd.",
     unisoundPosition: "AI Labs Intern",
+    unisoundDetailLocation: "Minhang District, Shanghai, China",
+    unisoundWorkOverview: "At AI Labs, I led the evaluation and optimization of a natural-language data-query Agent for new-energy vehicle sales, addressing the gap between executable queries and correct business semantics. I built an automated query and evaluation loop with concurrent batch processing and cross-validation, improving the reliability of SQL logic and label checks and bringing deterministic label judgment close to 100%.",
     unisoundPeriod: "Jan 2026 – Mar 2026",
     cailiCompany: "Shanghai Caili Network Co., Ltd.",
     cailiPosition: "Algorithm Intern",
+    cailiDetailPosition: "AI Training Intern",
+    cailiDepartment: "Algorithm Department",
+    cailiDetailLocation: "Xuhui District, Shanghai, China",
+    cailiWorkOverview: "In the Algorithm Department, I independently developed an AIGC question-generation system for AI interviewing and talent assessment, responding to the need for scalable, job-relevant, and reliable question production. The system supports English chart-description and Raven reasoning tasks through controllable generation workflows, and was successfully delivered for use in enterprise recruitment.",
     cailiPeriod: "Aug 2025 – Oct 2025",
     tiebaDescription: "An unofficial Baidu Tieba Android client built natively with Kotlin and Jetpack Compose, supporting browsing, search, favorites, media viewing, and local reading history.",
     civilizationDescription: "A Civilization VI: Gathering Storm AI overhaul for adaptive strategy, stronger military execution, and a competitive Deity game from opening to victory.",
@@ -91,14 +204,37 @@ const translations = {
     personalProfile: "个人资料",
     languageSwitcher: "语言切换",
     profileName: "朱泽南",
+    profileSummary: "同济大学人工智能专业本科生",
+    home: "首页",
     education: "教育经历",
-    projects: "项目经历",
+    projects: "代表项目",
     workExperience: "工作经历",
     workLocation: "中国上海",
+    workDetails: "工作经历详情",
+    backToWorkExperience: "返回工作经历",
+    workActions: "公司链接",
+    companyWebsite: "公司官网",
+    workPeriodLabel: "任职时间",
+    workLocationLabel: "地点",
+    workOverviewHeading: "经历概述",
+    workTechnologiesHeading: "技术栈",
     researchOutputs: "研究成果",
     projectDetails: "项目详情",
-    backToProjects: "返回项目经历",
+    backToProjects: "返回代表项目",
     projectActions: "项目链接",
+    viewOnGitHub: "在 GitHub 查看",
+    latestRelease: "最新版本",
+    projectStatusLabel: "状态",
+    projectPlatformLabel: "平台",
+    projectVersionLabel: "版本",
+    projectRequiresLabel: "运行要求",
+    projectStackLabel: "技术栈",
+    projectInterfaceLabel: "使用方式",
+    projectLicenseLabel: "开源许可",
+    projectStatusInDevelopment: "开发中",
+    projectStatusReleased: "已发布",
+    projectStatusPreRelease: "预发布",
+    projectStatusPrototype: "原型阶段",
     projectOverviewHeading: "项目介绍",
     projectScreenshotsHeading: "截图",
     dongqiudiProjectOverview: "DongqiudiPure Android 是一款使用 Kotlin 和 Jetpack Compose 原生构建的轻量级第三方懂球帝 Android 客户端。项目专注于简洁的浏览体验，并将依赖账户的功能保持为可选项。项目以 GPL-3.0-only 发布，与懂球帝及其官方运营方不存在隶属、授权或认可关系。",
@@ -131,12 +267,22 @@ const translations = {
     highSchoolLocation: "中国上海",
     smartSensCompany: "思特威（上海）电子科技股份有限公司",
     smartSensPosition: "软件开发实习生",
+    smartSensDetailPosition: "软件开发实习生",
+    smartSensDepartment: "应用部",
+    smartSensDetailLocation: "中国上海市闵行区",
+    smartSensWorkOverview: "在应用部担任软件开发实习生期间，我开发了一个领域专用 Agent，将自然语言测试需求转换为经过校验、可执行的工作流，通过将模型规划约束在已注册的测试能力范围内，并在执行前确定性检查参数、跨步骤数据依赖与设备状态，提高执行可靠性；相关功能已在标准与自定义场景中完成验证。我还开发了一套用于统一创建、运行和检查工作流的可视化桌面软件，目前已在公司内部使用。",
     smartSensPeriod: "2026.07 – 至今",
     unisoundCompany: "云知声智能科技股份有限公司",
     unisoundPosition: "AI Labs 实习生",
+    unisoundDetailLocation: "中国上海市闵行区",
+    unisoundWorkOverview: "在 AI Labs 主导新能源汽车销售数据自然语言查数 Agent 的评测与优化，重点解决查询代码可运行但不一定符合业务口径的问题。我构建自动化查询与评测闭环，通过并发批处理和交叉验证提升 SQL 逻辑与标签校验的可靠性，使确定性标签判断成功率接近 100%。",
     unisoundPeriod: "2026.01 – 2026.03",
     cailiCompany: "上海才历网络有限公司",
     cailiPosition: "算法实习生",
+    cailiDetailPosition: "AI 训练实习生",
+    cailiDepartment: "算法部门",
+    cailiDetailLocation: "中国上海市徐汇区",
+    cailiWorkOverview: "在算法部门独立开发面向 AI 面试与人才测评的 AIGC 自动出题系统，解决岗位相关题目难以稳定、批量生产的问题。系统通过可控生成流程支持英语图表描述题与 Raven 推理题，并完成产品交付，应用于企业招聘场景。",
     cailiPeriod: "2025.08 – 2025.10",
     tiebaDescription: "原生 Kotlin 与 Jetpack Compose 构建的非官方贴吧 Android 客户端，支持浏览、搜索、收藏、媒体查看与本地阅读记录。",
     civilizationDescription: "一款针对 Civilization VI: Gathering Storm 的 AI 改进模组，旨在实现自适应战略、提升军事执行力，并让神级难度从开局到胜利都保持竞争性。",
@@ -194,7 +340,9 @@ const setCurrentNavigation = (sectionId) => {
 
 const updateCurrentNavigation = () => {
   if (!navigationSections.length) {
-    if (document.querySelector(".project-page")) {
+    if (document.querySelector(".work-page")) {
+      setCurrentNavigation("work-experience");
+    } else if (document.querySelector(".project-page")) {
       setCurrentNavigation("projects");
     } else if (document.querySelector(".publication-page")) {
       setCurrentNavigation("research-outputs");
