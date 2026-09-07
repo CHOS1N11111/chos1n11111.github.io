@@ -11,7 +11,8 @@
     <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:wght@600&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:wght@600&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@700&amp;family=Source+Serif+4:opsz,wght@8..60,700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/vendor/photoswipe/dist/photoswipe.css">
     <link rel="stylesheet" href="../../style.css">
   </head>
   <body class="detail-page-body">
@@ -131,6 +132,66 @@
             <h2 data-i18n="projectOverviewHeading">Overview</h2>
             <p class="project-overview" data-i18n="repoPilotProjectOverview">RepoPilot Agent is a local, approval-first coding Agent that converts repository tasks and GitHub issues into reviewable change proposals. It builds context from files, symbols, imports, Git state, and source-test relationships, then uses deterministic planning or an OpenAI-compatible LLM to produce plans, virtual diffs, and validation feedback. Writes happen only inside managed worktrees after exact human approval, with bounded repair, checkpoints, restart-safe recovery, and rollback evidence; the CLI and local Web UI also inspect GitHub issues, pull requests, reviews, comments, and CI status. RepoPilot never commits or pushes task changes automatically.</p>
           </section>
+
+          <section class="project-detail-section">
+            <h2 data-i18n="projectScreenshotsHeading">Screenshots</h2>
+            <div class="project-screenshot-grid project-screenshot-grid--wide">
+              <figure class="project-screenshot project-screenshot--wide">
+                <a href="../../assets/projects/repopilot-agent/01-workspace-overview.png" target="_blank" rel="noopener noreferrer">
+                  <img src="../../assets/projects/repopilot-agent/thumbnails/01-workspace-overview-960.webp"
+                    srcset="../../assets/projects/repopilot-agent/thumbnails/01-workspace-overview-480.webp 480w, ../../assets/projects/repopilot-agent/thumbnails/01-workspace-overview-960.webp 960w, ../../assets/projects/repopilot-agent/thumbnails/01-workspace-overview-1440.webp 1440w"
+                    sizes="(min-width: 64rem) min(26.5rem, calc((100vw - 19rem) / 2)), (min-width: 48.0625rem) calc(100vw - 14rem), calc(100vw - 2rem)"
+                    alt="Empty workspace" data-i18n-alt="repoPilotScreenshotWorkspace" width="1920" height="1080" loading="lazy" decoding="async">
+                </a>
+                <figcaption data-i18n="repoPilotScreenshotWorkspace">Empty workspace</figcaption>
+              </figure>
+              <figure class="project-screenshot project-screenshot--wide">
+                <a href="../../assets/projects/repopilot-agent/02-exact-write-approval.png" target="_blank" rel="noopener noreferrer">
+                  <img src="../../assets/projects/repopilot-agent/thumbnails/02-exact-write-approval-960.webp"
+                    srcset="../../assets/projects/repopilot-agent/thumbnails/02-exact-write-approval-480.webp 480w, ../../assets/projects/repopilot-agent/thumbnails/02-exact-write-approval-960.webp 960w, ../../assets/projects/repopilot-agent/thumbnails/02-exact-write-approval-1440.webp 1440w"
+                    sizes="(min-width: 64rem) min(26.5rem, calc((100vw - 19rem) / 2)), (min-width: 48.0625rem) calc(100vw - 14rem), calc(100vw - 2rem)"
+                    alt="Exact diff approval" data-i18n-alt="repoPilotScreenshotApproval" width="1920" height="1080" loading="lazy" decoding="async">
+                </a>
+                <figcaption data-i18n="repoPilotScreenshotApproval">Exact diff approval</figcaption>
+              </figure>
+              <figure class="project-screenshot project-screenshot--wide">
+                <a href="../../assets/projects/repopilot-agent/04-agent-trajectory.png" target="_blank" rel="noopener noreferrer">
+                  <img src="../../assets/projects/repopilot-agent/thumbnails/04-agent-trajectory-960.webp"
+                    srcset="../../assets/projects/repopilot-agent/thumbnails/04-agent-trajectory-480.webp 480w, ../../assets/projects/repopilot-agent/thumbnails/04-agent-trajectory-960.webp 960w, ../../assets/projects/repopilot-agent/thumbnails/04-agent-trajectory-1440.webp 1440w"
+                    sizes="(min-width: 64rem) min(26.5rem, calc((100vw - 19rem) / 2)), (min-width: 48.0625rem) calc(100vw - 14rem), calc(100vw - 2rem)"
+                    alt="Agent trajectory and replay" data-i18n-alt="repoPilotScreenshotTrajectory" width="1920" height="1080" loading="lazy" decoding="async">
+                </a>
+                <figcaption data-i18n="repoPilotScreenshotTrajectory">Agent trajectory and replay</figcaption>
+              </figure>
+              <figure class="project-screenshot project-screenshot--wide">
+                <a href="../../assets/projects/repopilot-agent/05-validation-results.png" target="_blank" rel="noopener noreferrer">
+                  <img src="../../assets/projects/repopilot-agent/thumbnails/05-validation-results-960.webp"
+                    srcset="../../assets/projects/repopilot-agent/thumbnails/05-validation-results-480.webp 480w, ../../assets/projects/repopilot-agent/thumbnails/05-validation-results-960.webp 960w, ../../assets/projects/repopilot-agent/thumbnails/05-validation-results-1440.webp 1440w"
+                    sizes="(min-width: 64rem) min(26.5rem, calc((100vw - 19rem) / 2)), (min-width: 48.0625rem) calc(100vw - 14rem), calc(100vw - 2rem)"
+                    alt="Validation results" data-i18n-alt="repoPilotScreenshotValidation" width="1920" height="1080" loading="lazy" decoding="async">
+                </a>
+                <figcaption data-i18n="repoPilotScreenshotValidation">Validation results</figcaption>
+              </figure>
+              <figure class="project-screenshot project-screenshot--wide">
+                <a href="../../assets/projects/repopilot-agent/07-delivery-draft.png" target="_blank" rel="noopener noreferrer">
+                  <img src="../../assets/projects/repopilot-agent/thumbnails/07-delivery-draft-960.webp"
+                    srcset="../../assets/projects/repopilot-agent/thumbnails/07-delivery-draft-480.webp 480w, ../../assets/projects/repopilot-agent/thumbnails/07-delivery-draft-960.webp 960w, ../../assets/projects/repopilot-agent/thumbnails/07-delivery-draft-1440.webp 1440w"
+                    sizes="(min-width: 64rem) min(26.5rem, calc((100vw - 19rem) / 2)), (min-width: 48.0625rem) calc(100vw - 14rem), calc(100vw - 2rem)"
+                    alt="Delivery draft" data-i18n-alt="repoPilotScreenshotDraft" width="1920" height="1080" loading="lazy" decoding="async">
+                </a>
+                <figcaption data-i18n="repoPilotScreenshotDraft">Delivery draft</figcaption>
+              </figure>
+              <figure class="project-screenshot project-screenshot--wide">
+                <a href="../../assets/projects/repopilot-agent/09-github-issue-task.png" target="_blank" rel="noopener noreferrer">
+                  <img src="../../assets/projects/repopilot-agent/thumbnails/09-github-issue-task-960.webp"
+                    srcset="../../assets/projects/repopilot-agent/thumbnails/09-github-issue-task-480.webp 480w, ../../assets/projects/repopilot-agent/thumbnails/09-github-issue-task-960.webp 960w, ../../assets/projects/repopilot-agent/thumbnails/09-github-issue-task-1440.webp 1440w"
+                    sizes="(min-width: 64rem) min(26.5rem, calc((100vw - 19rem) / 2)), (min-width: 48.0625rem) calc(100vw - 14rem), calc(100vw - 2rem)"
+                    alt="GitHub issue as a task" data-i18n-alt="repoPilotScreenshotIssue" width="1920" height="1080" loading="lazy" decoding="async">
+                </a>
+                <figcaption data-i18n="repoPilotScreenshotIssue">GitHub issue as a task</figcaption>
+              </figure>
+            </div>
+          </section>
         </article>
       </div>
 
@@ -141,5 +202,8 @@
     </main>
 
     <script src="../../script.js" defer></script>
+    <script src="../../assets/vendor/photoswipe/dist/umd/photoswipe.umd.min.js" defer></script>
+    <script src="../../assets/vendor/photoswipe/dist/umd/photoswipe-lightbox.umd.min.js" defer></script>
+    <script src="../../gallery.js" defer></script>
   </body>
 </html>

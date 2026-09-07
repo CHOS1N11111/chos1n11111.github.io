@@ -142,6 +142,14 @@ const translations = {
     projectStatusPrototype: "Prototype",
     projectOverviewHeading: "Overview",
     projectScreenshotsHeading: "Screenshots",
+    projectCoverHeading: "Project Cover",
+    galleryLabel: "Project images",
+    galleryClose: "Close image viewer",
+    galleryPrevious: "Previous image",
+    galleryNext: "Next image",
+    galleryZoomIn: "Zoom in",
+    galleryZoomOut: "Zoom out",
+    galleryError: "The image could not be loaded.",
     dongqiudiProjectOverview: "DongqiudiPure Android is a lightweight, unofficial Dongqiudi client built natively with Kotlin and Jetpack Compose. It focuses on a clean Android browsing experience while keeping account-dependent features optional. The project is distributed under GPL-3.0-only and is independent of Dongqiudi and its official operator.",
     tiebaProjectOverview: "TiebaPure Android is a native Kotlin and Jetpack Compose client for Baidu Tieba that follows Android conventions for navigation, gestures, media, storage, and adaptive layouts. Visitors can browse recommendations, forums, search results, threads, nested replies, images, and videos without signing in; signed-in users can access messages, follows, favorites, check-ins, likes, posting, replies, and profile editing. Local features include filtering, history and reading-position recovery, offline thread storage, responsive phone and tablet layouts, custom reading fonts, and deep links. Posting, replies, and profile editing are experimental features that must be enabled explicitly.",
     civilizationProjectOverview: "Adaptive Strategic AI is a Gathering Storm AI overhaul designed to keep Deity games competitive from the opening through the victory screen. It replaces much of vanilla Deity's front-loaded spike with an era-scaled difficulty curve, while each major AI independently adjusts development, recovery, expansion, defense, pressure, and war plans based on its position and recent trend. The mod strengthens settlement, economy, military readiness, city assaults, wartime production, and victory-specific priorities, while limiting recovery bonuses to AIs with confirmed broad or severe deficits. It does not spawn units or grant technologies, civics, resources, cities, or stored progress.",
@@ -152,6 +160,13 @@ const translations = {
     tiebaScreenshotSearch: "Guest search",
     tiebaScreenshotReplies: "Guest replies",
     tiebaScreenshotSettings: "Signed-in settings",
+    repoPilotScreenshotWorkspace: "Empty workspace",
+    repoPilotScreenshotApproval: "Exact diff approval",
+    repoPilotScreenshotTrajectory: "Agent trajectory and replay",
+    repoPilotScreenshotValidation: "Validation results",
+    repoPilotScreenshotDraft: "Delivery draft",
+    repoPilotScreenshotIssue: "GitHub issue as a task",
+    civilizationCoverCaption: "Adaptive Strategic AI cover",
     publicationDetails: "Publication Details",
     backToResearchOutputs: "Back to Research Outputs",
     publicationActions: "Publication links",
@@ -237,6 +252,14 @@ const translations = {
     projectStatusPrototype: "原型阶段",
     projectOverviewHeading: "项目介绍",
     projectScreenshotsHeading: "截图",
+    projectCoverHeading: "项目封面",
+    galleryLabel: "项目图片",
+    galleryClose: "关闭图片查看器",
+    galleryPrevious: "上一张图片",
+    galleryNext: "下一张图片",
+    galleryZoomIn: "放大",
+    galleryZoomOut: "缩小",
+    galleryError: "图片加载失败。",
     dongqiudiProjectOverview: "DongqiudiPure Android 是一款使用 Kotlin 和 Jetpack Compose 原生构建的轻量级第三方懂球帝 Android 客户端。项目专注于简洁的浏览体验，并将依赖账户的功能保持为可选项。项目以 GPL-3.0-only 发布，与懂球帝及其官方运营方不存在隶属、授权或认可关系。",
     tiebaProjectOverview: "TiebaPure Android 是使用 Kotlin 与 Jetpack Compose 原生构建的第三方百度贴吧客户端，导航、手势、媒体播放、存储和自适应布局遵循 Android 平台惯例。未登录时可浏览推荐、贴吧列表、搜索结果、帖子、楼中楼、图片与视频；登录后可使用消息、关注、收藏同步、签到、点赞、发帖、回复和资料编辑等功能。本机功能还包括内容屏蔽、浏览历史与阅读位置恢复、帖子离线保存、手机和平板自适应布局、自定义阅读字体与深链接；发帖、回复和资料编辑目前仍是需要显式启用的实验性功能。",
     civilizationProjectOverview: "Adaptive Strategic AI 是一款面向 Gathering Storm 规则集的 AI 改进模组，目标是让神级难度从开局到胜利阶段都保持竞争性。它以随时代增长的难度曲线替代原版神级难度过度集中的前期压力，并让每个主要 AI 根据自身位置与近期趋势独立调整发展、恢复、扩张、防御、施压和战争计划。模组强化了定居、经济、军事准备、攻城、战时生产和不同胜利路线的执行，同时只向经确认存在广泛或严重落后情况的 AI 提供有限恢复支持。它不会生成单位，也不会直接授予科技、市政、资源、城市或已储存的进度。",
@@ -247,6 +270,13 @@ const translations = {
     tiebaScreenshotSearch: "未登录访客搜索",
     tiebaScreenshotReplies: "未登录访客回复",
     tiebaScreenshotSettings: "登录后的设置",
+    repoPilotScreenshotWorkspace: "空白工作区",
+    repoPilotScreenshotApproval: "精确 diff 审批",
+    repoPilotScreenshotTrajectory: "Agent 轨迹与回放",
+    repoPilotScreenshotValidation: "验证结果",
+    repoPilotScreenshotDraft: "交付草稿",
+    repoPilotScreenshotIssue: "GitHub Issue 任务",
+    civilizationCoverCaption: "Adaptive Strategic AI 项目封面",
     publicationDetails: "论文详情",
     backToResearchOutputs: "返回研究成果",
     publicationActions: "论文链接",
@@ -471,7 +501,12 @@ navigation.addEventListener("click", (event) => {
 });
 
 window.addEventListener("scroll", queueCurrentNavigationUpdate, { passive: true });
-window.addEventListener("resize", queueCurrentNavigationUpdate);
+window.addEventListener("resize", () => {
+  if (menuToggle.getClientRects().length === 0 && menuToggle.getAttribute("aria-expanded") === "true") {
+    setMenuOpen(false);
+  }
+  queueCurrentNavigationUpdate();
+});
 window.addEventListener("hashchange", queueCurrentNavigationUpdate);
 
 languageSwitchers.forEach((languageSwitcher) => {
@@ -485,7 +520,7 @@ languageSwitchers.forEach((languageSwitcher) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
+  if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true" && !document.querySelector(".pswp--open")) {
     setMenuOpen(false);
     menuToggle.focus();
   }

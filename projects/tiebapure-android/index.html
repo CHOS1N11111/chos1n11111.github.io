@@ -11,7 +11,8 @@
     <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:wght@600&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:wght@600&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@700&amp;family=Source+Serif+4:opsz,wght@8..60,700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/vendor/photoswipe/dist/photoswipe.css">
     <link rel="stylesheet" href="../../style.css">
   </head>
   <body class="detail-page-body">
@@ -143,40 +144,58 @@
 
           <section class="project-detail-section">
             <h2 data-i18n="projectScreenshotsHeading">Screenshots</h2>
-            <div class="project-screenshot-grid">
+            <div class="project-screenshot-grid project-screenshot-grid--portrait">
               <figure class="project-screenshot">
                 <a href="../../assets/projects/tiebapure-android/home-logged-out.png" target="_blank">
-                  <img src="../../assets/projects/tiebapure-android/home-logged-out.png" alt="Guest home" data-i18n-alt="tiebaScreenshotHome" width="720" height="1600" loading="lazy" decoding="async">
+                  <img src="../../assets/projects/tiebapure-android/thumbnails/home-logged-out-480.webp"
+                    srcset="../../assets/projects/tiebapure-android/thumbnails/home-logged-out-320.webp 320w, ../../assets/projects/tiebapure-android/thumbnails/home-logged-out-480.webp 480w, ../../assets/projects/tiebapure-android/thumbnails/home-logged-out-720.webp 720w"
+                    sizes="(max-width: 48rem) calc((100vw - 2.75rem) / 2), (max-width: 63.9375rem) calc((100vw - 15rem) / 2), min(17.333rem, calc((100vw - 20rem) / 3))"
+                    alt="Guest home" data-i18n-alt="tiebaScreenshotHome" width="720" height="1600" loading="lazy" decoding="async">
                 </a>
                 <figcaption data-i18n="tiebaScreenshotHome">Guest home</figcaption>
               </figure>
               <figure class="project-screenshot">
                 <a href="../../assets/projects/tiebapure-android/thread-logged-out.png" target="_blank">
-                  <img src="../../assets/projects/tiebapure-android/thread-logged-out.png" alt="Guest thread details" data-i18n-alt="tiebaScreenshotThread" width="720" height="1600" loading="lazy" decoding="async">
+                  <img src="../../assets/projects/tiebapure-android/thumbnails/thread-logged-out-480.webp"
+                    srcset="../../assets/projects/tiebapure-android/thumbnails/thread-logged-out-320.webp 320w, ../../assets/projects/tiebapure-android/thumbnails/thread-logged-out-480.webp 480w, ../../assets/projects/tiebapure-android/thumbnails/thread-logged-out-720.webp 720w"
+                    sizes="(max-width: 48rem) calc((100vw - 2.75rem) / 2), (max-width: 63.9375rem) calc((100vw - 15rem) / 2), min(17.333rem, calc((100vw - 20rem) / 3))"
+                    alt="Guest thread details" data-i18n-alt="tiebaScreenshotThread" width="720" height="1600" loading="lazy" decoding="async">
                 </a>
                 <figcaption data-i18n="tiebaScreenshotThread">Guest thread details</figcaption>
               </figure>
               <figure class="project-screenshot">
                 <a href="../../assets/projects/tiebapure-android/replies-logged-out.png" target="_blank">
-                  <img src="../../assets/projects/tiebapure-android/replies-logged-out.png" alt="Guest replies" data-i18n-alt="tiebaScreenshotReplies" width="720" height="1600" loading="lazy" decoding="async">
+                  <img src="../../assets/projects/tiebapure-android/thumbnails/replies-logged-out-480.webp"
+                    srcset="../../assets/projects/tiebapure-android/thumbnails/replies-logged-out-320.webp 320w, ../../assets/projects/tiebapure-android/thumbnails/replies-logged-out-480.webp 480w, ../../assets/projects/tiebapure-android/thumbnails/replies-logged-out-720.webp 720w"
+                    sizes="(max-width: 48rem) calc((100vw - 2.75rem) / 2), (max-width: 63.9375rem) calc((100vw - 15rem) / 2), min(17.333rem, calc((100vw - 20rem) / 3))"
+                    alt="Guest replies" data-i18n-alt="tiebaScreenshotReplies" width="720" height="1600" loading="lazy" decoding="async">
                 </a>
                 <figcaption data-i18n="tiebaScreenshotReplies">Guest replies</figcaption>
               </figure>
               <figure class="project-screenshot">
                 <a href="../../assets/projects/tiebapure-android/search-logged-out.png" target="_blank">
-                  <img src="../../assets/projects/tiebapure-android/search-logged-out.png" alt="Guest search" data-i18n-alt="tiebaScreenshotSearch" width="720" height="1600" loading="lazy" decoding="async">
+                  <img src="../../assets/projects/tiebapure-android/thumbnails/search-logged-out-480.webp"
+                    srcset="../../assets/projects/tiebapure-android/thumbnails/search-logged-out-320.webp 320w, ../../assets/projects/tiebapure-android/thumbnails/search-logged-out-480.webp 480w, ../../assets/projects/tiebapure-android/thumbnails/search-logged-out-720.webp 720w"
+                    sizes="(max-width: 48rem) calc((100vw - 2.75rem) / 2), (max-width: 63.9375rem) calc((100vw - 15rem) / 2), min(17.333rem, calc((100vw - 20rem) / 3))"
+                    alt="Guest search" data-i18n-alt="tiebaScreenshotSearch" width="720" height="1600" loading="lazy" decoding="async">
                 </a>
                 <figcaption data-i18n="tiebaScreenshotSearch">Guest search</figcaption>
               </figure>
               <figure class="project-screenshot">
                 <a href="../../assets/projects/tiebapure-android/favorites-logged-in.png" target="_blank">
-                  <img src="../../assets/projects/tiebapure-android/favorites-logged-in.png" alt="Signed-in favorites" data-i18n-alt="tiebaScreenshotFavorites" width="720" height="1600" loading="lazy" decoding="async">
+                  <img src="../../assets/projects/tiebapure-android/thumbnails/favorites-logged-in-480.webp"
+                    srcset="../../assets/projects/tiebapure-android/thumbnails/favorites-logged-in-320.webp 320w, ../../assets/projects/tiebapure-android/thumbnails/favorites-logged-in-480.webp 480w, ../../assets/projects/tiebapure-android/thumbnails/favorites-logged-in-720.webp 720w"
+                    sizes="(max-width: 48rem) calc((100vw - 2.75rem) / 2), (max-width: 63.9375rem) calc((100vw - 15rem) / 2), min(17.333rem, calc((100vw - 20rem) / 3))"
+                    alt="Signed-in favorites" data-i18n-alt="tiebaScreenshotFavorites" width="720" height="1600" loading="lazy" decoding="async">
                 </a>
                 <figcaption data-i18n="tiebaScreenshotFavorites">Signed-in favorites</figcaption>
               </figure>
               <figure class="project-screenshot">
                 <a href="../../assets/projects/tiebapure-android/settings-logged-in.png" target="_blank">
-                  <img src="../../assets/projects/tiebapure-android/settings-logged-in.png" alt="Signed-in settings" data-i18n-alt="tiebaScreenshotSettings" width="720" height="1600" loading="lazy" decoding="async">
+                  <img src="../../assets/projects/tiebapure-android/thumbnails/settings-logged-in-480.webp"
+                    srcset="../../assets/projects/tiebapure-android/thumbnails/settings-logged-in-320.webp 320w, ../../assets/projects/tiebapure-android/thumbnails/settings-logged-in-480.webp 480w, ../../assets/projects/tiebapure-android/thumbnails/settings-logged-in-720.webp 720w"
+                    sizes="(max-width: 48rem) calc((100vw - 2.75rem) / 2), (max-width: 63.9375rem) calc((100vw - 15rem) / 2), min(17.333rem, calc((100vw - 20rem) / 3))"
+                    alt="Signed-in settings" data-i18n-alt="tiebaScreenshotSettings" width="720" height="1600" loading="lazy" decoding="async">
                 </a>
                 <figcaption data-i18n="tiebaScreenshotSettings">Signed-in settings</figcaption>
               </figure>
@@ -192,5 +211,8 @@
     </main>
 
     <script src="../../script.js" defer></script>
+    <script src="../../assets/vendor/photoswipe/dist/umd/photoswipe.umd.min.js" defer></script>
+    <script src="../../assets/vendor/photoswipe/dist/umd/photoswipe-lightbox.umd.min.js" defer></script>
+    <script src="../../gallery.js" defer></script>
   </body>
 </html>
