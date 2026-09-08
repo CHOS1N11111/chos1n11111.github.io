@@ -3,6 +3,7 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".site-navigation");
 const masthead = document.querySelector(".masthead");
+const siteRootUrl = new URL(".", document.querySelector('script[src*="script.js"]').src);
 
 const navigationSubmenus = [
   {
@@ -38,9 +39,6 @@ const navigationSubmenus = [
 ];
 
 const initializeNavigationSubmenus = () => {
-  const scriptElement = document.querySelector('script[src*="script.js"]');
-  const siteRootUrl = new URL(".", scriptElement.src);
-
   navigationSubmenus.forEach(({ sectionId, triggerId, alignEnd, items }) => {
     const trigger = navigation.querySelector(`a[href$="#${sectionId}"]`);
     if (!trigger || trigger.closest(".navigation-item")) {
@@ -95,6 +93,10 @@ const navigationSections = navigationItems.filter((item) => item.section);
 const languageSwitchers = document.querySelectorAll(".language-switcher");
 const languageOptions = document.querySelectorAll(".language-option");
 const languageLinks = document.querySelectorAll("[data-preserve-language]");
+const canonicalPagePath = new URL(window.location.href).pathname.slice(siteRootUrl.pathname.length);
+const canonicalUrl = new URL(canonicalPagePath.replace(/index\.html$/, ""), "https://chos1n11111.github.io/");
+const canonicalLink = document.createElement("link");
+canonicalLink.rel = "canonical";
 const citationCopyButton = document.querySelector("[data-copy-citation]");
 const citationText = document.querySelector("[data-citation-text]");
 const citationCopyIcon = document.querySelector("[data-copy-icon]");
@@ -438,6 +440,13 @@ const setLanguage = (language) => {
 
   currentLanguage = language;
   document.documentElement.lang = language;
+
+  // Both languages share one HTML file; avoid a static canonical that conflicts with the selected language.
+  canonicalUrl.search = language === "en" ? "" : new URLSearchParams({ lang: language }).toString();
+  canonicalLink.href = canonicalUrl.href;
+  if (!canonicalLink.isConnected) {
+    document.head.append(canonicalLink);
+  }
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const translation = translations[language][element.dataset.i18n];
