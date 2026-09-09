@@ -1,57 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://chos1n11111.github.io/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/"/>
   </url>
   <url>
-    <loc>https://chos1n11111.github.io/?lang=zh-CN</loc>
+    <loc>https://chos1n11111.github.io/zh/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/"/>
   </url>
   <url>
     <loc>https://chos1n11111.github.io/work/smartsens/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/work/smartsens/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/work/smartsens/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/work/smartsens/"/>
   </url>
   <url>
-    <loc>https://chos1n11111.github.io/work/smartsens/?lang=zh-CN</loc>
+    <loc>https://chos1n11111.github.io/zh/work/smartsens/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/work/smartsens/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/work/smartsens/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/work/smartsens/"/>
   </url>
   <url>
     <loc>https://chos1n11111.github.io/work/unisound/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/work/unisound/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/work/unisound/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/work/unisound/"/>
   </url>
   <url>
-    <loc>https://chos1n11111.github.io/work/unisound/?lang=zh-CN</loc>
+    <loc>https://chos1n11111.github.io/zh/work/unisound/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/work/unisound/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/work/unisound/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/work/unisound/"/>
   </url>
   <url>
     <loc>https://chos1n11111.github.io/work/hrtps/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/work/hrtps/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/work/hrtps/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/work/hrtps/"/>
   </url>
   <url>
-    <loc>https://chos1n11111.github.io/work/hrtps/?lang=zh-CN</loc>
+    <loc>https://chos1n11111.github.io/zh/work/hrtps/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/work/hrtps/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/work/hrtps/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/work/hrtps/"/>
   </url>
   <url>
     <loc>https://chos1n11111.github.io/projects/dongqiudipure-android/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/projects/dongqiudipure-android/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/projects/dongqiudipure-android/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/dongqiudipure-android/"/>
   </url>
   <url>
-    <loc>https://chos1n11111.github.io/projects/dongqiudipure-android/?lang=zh-CN</loc>
+    <loc>https://chos1n11111.github.io/zh/projects/dongqiudipure-android/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/projects/dongqiudipure-android/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/projects/dongqiudipure-android/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/dongqiudipure-android/"/>
   </url>
   <url>
     <loc>https://chos1n11111.github.io/projects/tiebapure-android/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/projects/tiebapure-android/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/projects/tiebapure-android/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/tiebapure-android/"/>
   </url>
   <url>
-    <loc>https://chos1n11111.github.io/projects/tiebapure-android/?lang=zh-CN</loc>
+    <loc>https://chos1n11111.github.io/zh/projects/tiebapure-android/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/projects/tiebapure-android/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/projects/tiebapure-android/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/tiebapure-android/"/>
   </url>
   <url>
     <loc>https://chos1n11111.github.io/projects/adaptive-strategic-ai-mod-for-civilization-vi/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/projects/adaptive-strategic-ai-mod-for-civilization-vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/projects/adaptive-strategic-ai-mod-for-civilization-vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/adaptive-strategic-ai-mod-for-civilization-vi/"/>
   </url>
   <url>
-    <loc>https://chos1n11111.github.io/projects/adaptive-strategic-ai-mod-for-civilization-vi/?lang=zh-CN</loc>
+    <loc>https://chos1n11111.github.io/zh/projects/adaptive-strategic-ai-mod-for-civilization-vi/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/projects/adaptive-strategic-ai-mod-for-civilization-vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/projects/adaptive-strategic-ai-mod-for-civilization-vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/adaptive-strategic-ai-mod-for-civilization-vi/"/>
   </url>
   <url>
     <loc>https://chos1n11111.github.io/projects/repopilot-agent/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/projects/repopilot-agent/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/projects/repopilot-agent/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/repopilot-agent/"/>
   </url>
   <url>
-    <loc>https://chos1n11111.github.io/projects/repopilot-agent/?lang=zh-CN</loc>
+    <loc>https://chos1n11111.github.io/zh/projects/repopilot-agent/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/projects/repopilot-agent/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/projects/repopilot-agent/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/repopilot-agent/"/>
   </url>
   <url>
     <loc>https://chos1n11111.github.io/publications/option-based-hierarchical-uav-networks/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/publications/option-based-hierarchical-uav-networks/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/publications/option-based-hierarchical-uav-networks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/publications/option-based-hierarchical-uav-networks/"/>
   </url>
   <url>
-    <loc>https://chos1n11111.github.io/publications/option-based-hierarchical-uav-networks/?lang=zh-CN</loc>
+    <loc>https://chos1n11111.github.io/zh/publications/option-based-hierarchical-uav-networks/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/publications/option-based-hierarchical-uav-networks/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/publications/option-based-hierarchical-uav-networks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/publications/option-based-hierarchical-uav-networks/"/>
   </url>
 </urlset>

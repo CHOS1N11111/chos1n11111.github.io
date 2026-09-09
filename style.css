@@ -168,8 +168,8 @@ a:focus-visible {
   left: auto;
 }
 
-.navigation-item:hover .navigation-submenu,
-.navigation-item:focus-within .navigation-submenu {
+.navigation-item:not(.is-dismissed):hover .navigation-submenu,
+.navigation-item:not(.is-dismissed):focus-within .navigation-submenu {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
@@ -319,6 +319,9 @@ html[lang="zh-CN"] .profile-name {
 }
 
 .language-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   min-width: 0;
   padding: 0.15rem 0.25rem;
@@ -329,6 +332,7 @@ html[lang="zh-CN"] .profile-name {
   line-height: 1;
   letter-spacing: 0;
   white-space: nowrap;
+  text-decoration: none;
   border: 0;
   cursor: pointer;
 }
@@ -375,12 +379,12 @@ html[lang="zh-CN"] .profile-name {
   outline-offset: -2px;
 }
 
-.language-option[aria-pressed="true"] {
+.language-option[aria-current="true"] {
   background: var(--accent-green);
   color: var(--background);
 }
 
-.language-option[aria-pressed="true"]:hover {
+.language-option[aria-current="true"]:hover {
   color: var(--background);
 }
 
@@ -460,7 +464,8 @@ h2 {
 }
 
 .education-entry-header,
-.work-experience-entry-header {
+.work-experience-entry-header,
+.work-experience-role {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--entry-date-column);
   align-items: baseline;
@@ -531,6 +536,33 @@ h2 {
   color: var(--muted-text);
   font-size: 0.8rem;
   line-height: 1.5;
+}
+
+.work-experience-roles {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-experience-role .work-experience-position {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.5rem;
+  min-width: 0;
+  margin: 0;
+}
+
+.work-experience-department {
+  color: var(--muted-text);
+}
+
+.work-experience-department::before {
+  margin-right: 0.5rem;
+  color: #a0a4a7;
+  content: "\00b7";
 }
 
 .project-title,
@@ -811,6 +843,22 @@ h2 {
   overflow-wrap: anywhere;
 }
 
+.work-period-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.work-period-assignment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.75rem;
+}
+
+.work-period-department {
+  color: var(--muted-text);
+  font-weight: 400;
+}
+
 .publication-detail-authors,
 .publication-detail-venue {
   max-width: 54rem;
@@ -949,6 +997,10 @@ h2 {
 .project-screenshot--wide img {
   aspect-ratio: 16 / 9;
   object-fit: contain;
+}
+
+.project-screenshot-grid--portrait img {
+  aspect-ratio: auto;
 }
 
 .project-screenshot--cover {
@@ -1165,9 +1217,6 @@ html.gallery-open {
     top: calc(var(--masthead-height) + 2rem);
     left: 1rem;
     width: 9.5rem;
-    min-height: calc(100vh - var(--masthead-height) - 4rem);
-    min-height: calc(100svh - var(--masthead-height) - 4rem);
-    padding-bottom: 0;
   }
 
   .page-content {
@@ -1208,9 +1257,6 @@ html.gallery-open {
     left: max(1rem, calc((100% - var(--content-width)) / 2 + 1rem));
     width: 12rem;
     align-self: start;
-    min-height: calc(100vh - var(--masthead-height) - 4rem);
-    min-height: calc(100svh - var(--masthead-height) - 4rem);
-    padding-bottom: 0;
   }
 
   .page-content {
@@ -1219,6 +1265,26 @@ html.gallery-open {
 
   .language-switcher {
     margin-top: auto;
+  }
+}
+
+@media (min-width: 48.0625rem) {
+  .profile-sidebar {
+    height: calc(100vh - var(--masthead-height) - 3rem);
+    height: calc(100svh - var(--masthead-height) - 3rem);
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    padding-bottom: 1rem;
+  }
+
+  .profile-sidebar > * {
+    flex-shrink: 0;
+  }
+
+  .profile-content {
+    padding-bottom: 1.25rem;
   }
 }
 
@@ -1386,7 +1452,8 @@ html.gallery-open {
   }
 
   .education-entry-header,
-  .work-experience-entry-header {
+  .work-experience-entry-header,
+  .work-experience-role {
     grid-template-columns: minmax(0, 1fr);
     align-items: start;
     gap: 0.25rem;
@@ -1412,6 +1479,15 @@ html.gallery-open {
   .work-experience-position {
     order: 2;
     margin-top: 0.15rem;
+  }
+
+  .work-experience-department {
+    flex-basis: 100%;
+    font-size: 0.8rem;
+  }
+
+  .work-experience-department::before {
+    display: none;
   }
 
   .education-affiliation {

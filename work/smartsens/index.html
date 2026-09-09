@@ -1,16 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
-    <meta name="description" content="Software development internship at SmartSens, focused on a domain-specific Agent and a visual desktop application for CIS testing workflows.">
+    <meta name="description" content="Software development internship at SmartSens, developing a domain-specific Agent and visual desktop software for CIS testing workflows.">
     <meta name="author" content="CHOS1N11111">
     <meta name="application-name" content="CHOS1N11111">
     <title>SmartSens Internship | CHOS1N11111</title>
+    <link rel="canonical" href="https://chos1n11111.github.io/work/smartsens/">
+    <link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/work/smartsens/">
+    <link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/work/smartsens/">
+    <link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/work/smartsens/">
     <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:wght@600&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@700&amp;family=Source+Serif+4:opsz,wght@8..60,700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
   </head>
@@ -26,11 +30,11 @@
         </button>
 
         <nav class="site-navigation" id="site-navigation" aria-label="Primary navigation" data-i18n-aria-label="primaryNavigation">
-          <a href="../../index.html" data-preserve-language data-i18n="home">Home</a>
-          <a href="../../index.html#education" data-preserve-language data-i18n="education">Education</a>
-          <a href="../../index.html#work-experience" data-preserve-language data-i18n="workExperience">Work Experience</a>
-          <a href="../../index.html#projects" data-preserve-language data-i18n="projects">Featured Projects</a>
-          <a href="../../index.html#research-outputs" data-preserve-language data-i18n="researchOutputs">Research Outputs</a>
+          <a href="../../index.html" data-preserve-language="" data-i18n="home">Home</a>
+          <a href="../../index.html#education" data-preserve-language="" data-i18n="education">Education</a>
+          <a href="../../index.html#work-experience" data-preserve-language="" data-i18n="workExperience">Work Experience</a>
+          <a href="../../index.html#projects" data-preserve-language="" data-i18n="projects">Featured Projects</a>
+          <a href="../../index.html#research-outputs" data-preserve-language="" data-i18n="researchOutputs">Research Outputs</a>
         </nav>
       </div>
     </header>
@@ -79,29 +83,34 @@
         </div>
 
         <div class="language-switcher language-switcher-sidebar" role="group" aria-label="Language" data-i18n-aria-label="languageSwitcher">
-          <button class="language-option" type="button" data-language="en" aria-pressed="true" lang="en">English</button>
-          <button class="language-option" type="button" data-language="zh-CN" aria-pressed="false" lang="zh-CN">中文</button>
+          <a class="language-option" href="index.html" data-language="en" lang="en" hreflang="en" aria-current="true">English</a>
+          <a class="language-option" href="../../zh/work/smartsens/index.html" data-language="zh-CN" lang="zh-CN" hreflang="zh-CN">中文</a>
         </div>
       </aside>
 
       <div class="page-content">
         <article class="work-detail">
-          <a class="work-back" href="../../index.html#work-experience" data-preserve-language>
-            <span aria-hidden="true">&larr;</span>
+          <a class="work-back" href="../../index.html#work-experience" data-preserve-language="">
+            <span aria-hidden="true">←</span>
             <span data-i18n="backToWorkExperience">Back to Work Experience</span>
           </a>
 
           <p class="work-kicker" data-i18n="workDetails">Work Experience Details</p>
           <h1 class="work-detail-title" data-i18n="smartSensCompany">SmartSens Technology (Shanghai) Co., Ltd.</h1>
-          <p class="work-detail-position">
-            <span data-i18n="smartSensDetailPosition">Software Development Intern</span>
-            <span class="work-detail-position-separator" aria-hidden="true">·</span>
-            <span class="work-detail-department" data-i18n="smartSensDepartment">Applications Department</span>
-          </p>
+          <p class="work-detail-position" data-i18n="smartSensDetailPosition">Software Development Intern</p>
           <dl class="work-detail-meta">
             <div>
               <dt data-i18n="workPeriodLabel">Period</dt>
-              <dd data-i18n="smartSensPeriod">Jul 2026 – Present</dd>
+              <dd class="work-period-list">
+                <div class="work-period-assignment">
+                  <span data-i18n="smartSensAiPeriod">Sep 2026 – Present</span>
+                  <span class="work-period-department" id="smartsens-ai-department" data-i18n="smartSensAiDepartment">AI Department</span>
+                </div>
+                <div class="work-period-assignment">
+                  <span data-i18n="smartSensApplicationsPeriod">Jul 2026 – Sep 2026</span>
+                  <span class="work-period-department" id="smartsens-applications-department" data-i18n="smartSensApplicationsDepartment">Applications Department</span>
+                </div>
+              </dd>
             </div>
             <div>
               <dt data-i18n="workLocationLabel">Location</dt>
@@ -111,12 +120,12 @@
 
           <section class="work-detail-section">
             <h2 data-i18n="workOverviewHeading">Overview</h2>
-            <p class="work-overview" data-i18n="smartSensWorkOverview">As a Software Development Intern in the Applications Department, I developed a domain-specific Agent that converts natural-language test requests into validated, executable workflows by grounding model planning in registered testing capabilities and applying deterministic checks to parameters, cross-step data dependencies, and device state before execution. It has been validated across standard and custom scenarios. I also built a visual desktop application for creating, running, and inspecting workflows in one place, which is used internally.</p>
+            <p class="work-overview" data-i18n="smartSensWorkOverview">As a Software Development Intern at SmartSens, I developed a domain-specific Agent that converts natural-language test requests into validated, executable workflows by grounding model planning in registered testing capabilities and applying deterministic checks to parameters, cross-step data dependencies, and device state before execution. It has been validated across standard and custom scenarios. I also built a visual desktop application for creating, running, and inspecting workflows in one place, which is used internally.</p>
           </section>
 
           <section class="work-detail-section">
             <h2 data-i18n="workTechnologiesHeading">Technologies</h2>
-            <p class="work-technologies">Python · C++ · AI Agents · MCP · RAG · Agentic Workflows · React · TypeScript · WebSocket · pywebview</p>
+            <p class="work-technologies">Python · C++ · TypeScript · AI Agents · Agentic Workflows · Tool Calling · RAG · MCP · React · pywebview · WebSocket · Docker</p>
           </section>
 
           <nav class="work-actions work-actions-footer" aria-label="Company links" data-i18n-aria-label="workActions">
@@ -129,11 +138,12 @@
       </div>
 
       <div class="language-switcher language-switcher-mobile" role="group" aria-label="Language" data-i18n-aria-label="languageSwitcher">
-        <button class="language-option" type="button" data-language="en" aria-pressed="true" lang="en">English</button>
-        <button class="language-option" type="button" data-language="zh-CN" aria-pressed="false" lang="zh-CN">中文</button>
+        <a class="language-option" href="index.html" data-language="en" lang="en" hreflang="en" aria-current="true">English</a>
+        <a class="language-option" href="../../zh/work/smartsens/index.html" data-language="zh-CN" lang="zh-CN" hreflang="zh-CN">中文</a>
       </div>
     </main>
 
-    <script src="../../script.js" defer></script>
+    <script src="../../translations.js" defer=""></script>
+    <script src="../../script.js" defer=""></script>
   </body>
 </html>

@@ -1,0 +1,17 @@
+{
+  "name": "chos1n11111-personal-website",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/generate-pages.mjs",
+    "check": "node scripts/generate-pages.mjs --check",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "devDependencies": {
+    "cheerio": "1.2.0",
+    "parse-srcset": "1.0.2",
+    "playwright-core": "1.63.0"
+  }
+}
