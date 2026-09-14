@@ -21,7 +21,7 @@ test("generated pages are repeatable and up to date", async () => {
   assert.deepEqual(Object.keys(translations.en).sort(), Object.keys(translations["zh-CN"]).sort());
 });
 
-test("all 18 HTML files contain translated content, metadata, and valid local links", async () => {
+test("all generated HTML files contain translated content, metadata, and valid local links", async () => {
   for (const { page, language, file } of variants) {
     const $ = await readHtml(file);
     assert.equal($("html").attr("lang"), language, file);
@@ -79,7 +79,7 @@ test("sitemap and profile data describe the same bilingual pages and identity", 
   assert.equal($("urlset").attr("xmlns:xhtml"), "http://www.w3.org/1999/xhtml");
   const locations = $("loc").toArray().map((node) => $(node).text());
   assert.deepEqual(locations, variants.map(({ page, language }) => pageUrl(page.path, language)));
-  assert.equal(new Set(locations).size, 18);
+  assert.equal(new Set(locations).size, variants.length);
   $("url").each((index, node) => {
     const links = $(node).children("xhtml\\:link");
     assert.equal(links.length, 3);
@@ -152,6 +152,24 @@ test("homepage internships share the same company and assignment structure", asy
         assert.equal(home(role).find(".work-experience-period").length, 1);
       });
     }
+  }
+});
+
+test("SmartShot presents verified preview metadata and an overview-only detail page", async () => {
+  for (const language of languages) {
+    const home = await readHtml(pageFile("index.html", language));
+    const entry = home('.project-title a[href*="smartshot"]').closest("article");
+    assert.equal(entry.find('[data-i18n="roleCollaborator"]').text(), translations[language].roleCollaborator);
+    assert.equal(entry.find('[data-i18n="smartShotDescription"]').text(), translations[language].smartShotDescription);
+
+    const detail = await readHtml(pageFile("projects/smartshot/index.html", language));
+    assert.equal(detail('[data-i18n="roleCollaborator"]').text(), translations[language].roleCollaborator);
+    assert.equal(detail('[data-i18n="projectStatusPreview"]').text(), translations[language].projectStatusPreview);
+    assert.deepEqual(detail(".project-detail-meta dd").toArray().map((node) => detail(node).text()), ["Preview", "0.2.2", "macOS 14+", "Swift 6 / JavaScript"].map((value, index) => index === 0 ? translations[language].projectStatusPreview : value));
+    assert.equal(detail(".project-detail-section").length, 1);
+    assert.equal(detail(".project-overview").text(), translations[language].smartShotProjectOverview);
+    assert.equal(detail(".project-screenshot").length, 0);
+    assert.equal(detail('.project-actions a[href="https://github.com/CHOS1N11111/SmartShot"]').length, 1);
   }
 });
 
@@ -336,28 +354,28 @@ test("homepage navigation and language links follow scrolling instead of an old 
       for (const language of languages) {
         const route = pageFile("index.html", language);
         await tab.goto(new URL(route + "?preview=1#projects", baseUrl).href);
-        await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]').getAttribute("href").endsWith("#projects"));
+        await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]')?.getAttribute("href")?.endsWith("#projects"));
         await tab.evaluate(() => document.querySelector("#work-experience").scrollIntoView());
-        await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]').getAttribute("href").endsWith("#work-experience"));
+        await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]')?.getAttribute("href")?.endsWith("#work-experience"));
         assert.equal(new URL(await tab.locator('.language-option[data-language="zh-CN"]').first().getAttribute("href")).hash, "#work-experience");
 
         await tab.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
-        await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]').getAttribute("href").endsWith("#research-outputs"));
+        await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]')?.getAttribute("href")?.endsWith("#research-outputs"));
         assert.equal(new URL(await tab.locator('.language-option[data-language="en"]').first().getAttribute("href")).hash, "#research-outputs");
 
         await tab.evaluate(() => window.scrollTo(0, 0));
-        await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]').getAttribute("href").endsWith("#education"));
+        await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]')?.getAttribute("href")?.endsWith("#education"));
         assert.equal(new URL(await tab.locator('.language-option[data-language="en"]').first().getAttribute("href")).hash, "");
       }
     }
     await tab.setViewportSize({ width: 1440, height: 900 });
     await tab.goto(baseUrl + "?preview=1#projects");
-    await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]').getAttribute("href").endsWith("#projects"));
+    await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]')?.getAttribute("href")?.endsWith("#projects"));
     await tab.mouse.move(1200, 800);
     await tab.mouse.wheel(0, 500);
-    await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]').getAttribute("href").endsWith("#research-outputs"));
+    await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]')?.getAttribute("href")?.endsWith("#research-outputs"));
     await tab.evaluate(() => document.querySelector("#work-experience").scrollIntoView());
-    await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]').getAttribute("href").endsWith("#work-experience"));
+    await tab.waitForFunction(() => document.querySelector('a[aria-current="location"]')?.getAttribute("href")?.endsWith("#work-experience"));
     await tab.locator('.language-option[data-language="zh-CN"]:visible').click();
     await tab.waitForURL("**/zh/?preview=1#work-experience");
     await tab.screenshot({ path: path.join(screenshots, "navigation-after-manual-scroll.png") });

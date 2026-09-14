@@ -97,6 +97,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/repopilot-agent/"/>
   </url>
   <url>
+    <loc>https://chos1n11111.github.io/projects/smartshot/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/projects/smartshot/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/projects/smartshot/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/smartshot/"/>
+  </url>
+  <url>
+    <loc>https://chos1n11111.github.io/zh/projects/smartshot/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/projects/smartshot/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/projects/smartshot/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/smartshot/"/>
+  </url>
+  <url>
     <loc>https://chos1n11111.github.io/publications/option-based-hierarchical-uav-networks/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/publications/option-based-hierarchical-uav-networks/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/publications/option-based-hierarchical-uav-networks/"/>

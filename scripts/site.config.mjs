@@ -42,6 +42,11 @@ export const pages = [
     zhDescription: "RepoPilot Agent 是本地运行、以人工审批为先的编程 Agent，将仓库任务与 GitHub Issue 转化为计划、可审查的 diff 和验证反馈。本页展示项目介绍与界面截图。"
   },
   {
+    path: "projects/smartshot/index.html",
+    zhTitle: "SmartShot | CHOS1N11111",
+    zhDescription: "SmartShot 是一款原生 macOS 截图与录屏工具，支持智能内容块选择、区域和长截图、图片标注、本地 OCR 与浏览器扩展。"
+  },
+  {
     path: "publications/option-based-hierarchical-uav-networks/index.html",
     zhTitle: "Option-Based Hierarchical UAV Networks | Zhu Zenan",
     zhDescription: "Zhu Zenan 参与的边缘辅助 UAV 网络动态移动群智感知研究，提供摘要、DOI 和引用信息。"

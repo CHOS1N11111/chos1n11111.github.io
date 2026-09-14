@@ -179,5 +179,6 @@ export async function generatePages({ check = false } = {}) {
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const check = process.argv.includes("--check");
   const changed = await generatePages({ check });
-  console.log(check ? "All 18 pages and the sitemap are up to date." : `Generated 18 pages and the sitemap; ${changed.length} files updated.`);
+  const pageCount = pages.length * languages.length;
+  console.log(check ? `All ${pageCount} pages and the sitemap are up to date.` : `Generated ${pageCount} pages and the sitemap; ${changed.length} files updated.`);
 }
