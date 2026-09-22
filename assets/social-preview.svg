@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">CHOS1N11111</title>
+  <desc id="description">Personal website of Zhu Zenan (CHOS1N11111), featuring education, work experience, projects, and research.</desc>
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <rect width="1200" height="8" fill="#914734"/>
+  <text x="80" y="124" fill="#914734" font-family="Arial, sans-serif" font-size="20" letter-spacing="2">PERSONAL WEBSITE</text>
+  <text x="76" y="264" fill="#3d4144" font-family="Georgia, serif" font-size="72" font-weight="700">CHOS1N11111</text>
+  <text x="80" y="324" fill="#494e52" font-family="Arial, sans-serif" font-size="32">Zhu Zenan</text>
+  <path d="M80 381H1120" stroke="#2e8367" stroke-width="3"/>
+  <text x="80" y="438" fill="#494e52" font-family="Arial, sans-serif" font-size="23">Education · Work Experience · Projects · Research Outputs</text>
+  <text x="80" y="548" fill="#2e6276" font-family="Arial, sans-serif" font-size="24">chos1n11111.github.io</text>
+</svg>

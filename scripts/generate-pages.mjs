@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import parseSrcset from "parse-srcset";
 import translations from "../translations.js";
-import { pages, person, siteOrigin } from "./site.config.mjs";
+import { pages, person, siteName, siteOrigin, socialImage } from "./site.config.mjs";
 
 export const rootDirectory = fileURLToPath(new URL("../", import.meta.url));
 const pageFiles = new Set(pages.map((page) => page.path));
@@ -98,6 +98,36 @@ function renderPage(source, page, language) {
       hreflang: alternate,
       href: pageUrl(sourceFile, alternate === "zh-CN" ? alternate : "en")
     });
+  }
+  const title = $("title").text();
+  const description = $('meta[name="description"]').attr("content");
+  const imageUrl = new URL(socialImage.path, siteOrigin).href;
+  const openGraph = {
+    "og:type": "website",
+    "og:site_name": siteName,
+    "og:title": title,
+    "og:description": description,
+    "og:url": canonical,
+    "og:locale": language === "zh-CN" ? "zh_CN" : "en_US",
+    "og:locale:alternate": language === "zh-CN" ? "en_US" : "zh_CN",
+    "og:image": imageUrl,
+    "og:image:type": "image/png",
+    "og:image:width": String(socialImage.width),
+    "og:image:height": String(socialImage.height),
+    "og:image:alt": socialImage.alt[language]
+  };
+  for (const [property, content] of Object.entries(openGraph)) {
+    headElement(`meta[property="${property}"]`, "meta").attr({ property, content });
+  }
+  const twitterCard = {
+    "twitter:card": "summary_large_image",
+    "twitter:title": title,
+    "twitter:description": description,
+    "twitter:image": imageUrl,
+    "twitter:image:alt": socialImage.alt[language]
+  };
+  for (const [name, content] of Object.entries(twitterCard)) {
+    headElement(`meta[name="${name}"]`, "meta").attr({ name, content });
   }
   if (sourceFile === "index.html") {
     const profile = {

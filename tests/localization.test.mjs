@@ -101,10 +101,36 @@ test("sitemap and profile data describe the same bilingual pages and identity", 
   }
 });
 
+test("sharing cards match each page and reference a correctly sized local PNG", async () => {
+  for (const { language, file } of variants) {
+    const $ = await readHtml(file);
+    const meta = (attribute, key) => {
+      const element = $(`meta[${attribute}="${key}"]`);
+      assert.equal(element.length, 1, `${file}: ${key}`);
+      return element.attr("content");
+    };
+    assert.equal(meta("property", "og:url"), $('link[rel="canonical"]').attr("href"), file);
+    assert.equal(meta("property", "og:locale"), language === "zh-CN" ? "zh_CN" : "en_US", file);
+    for (const [key, expected] of [["title", $("title").text()], ["description", $('meta[name="description"]').attr("content")]]) {
+      assert.equal(meta("property", `og:${key}`), expected, file);
+      assert.equal(meta("name", `twitter:${key}`), expected, file);
+    }
+    assert.equal(meta("name", "twitter:card"), "summary_large_image", file);
+    const imageUrl = new URL(meta("property", "og:image"));
+    assert.equal(imageUrl.origin, new URL(siteOrigin).origin, file);
+    assert.equal(meta("name", "twitter:image"), imageUrl.href, file);
+    assert.ok(meta("property", "og:image:alt"), file);
+    const png = await readFile(path.join(rootDirectory, imageUrl.pathname.slice(1)));
+    assert.equal(png.subarray(0, 8).toString("hex"), "89504e470d0a1a0a", file);
+    assert.equal(Number(meta("property", "og:image:width")), png.readUInt32BE(16), file);
+    assert.equal(Number(meta("property", "og:image:height")), png.readUInt32BE(20), file);
+  }
+});
+
 test("SmartSens retains both assignments with a shared overview and technology stack", async () => {
   const expected = {
-    en: { departments: ["AI Department", "Applications Department"], periods: ["Sep 2026 \u2013 Present", "Jul 2026 \u2013 Sep 2026"] },
-    "zh-CN": { departments: ["AI \u90e8", "\u5e94\u7528\u90e8"], periods: ["2026.09 \u2013 \u81f3\u4eca", "2026.07 \u2013 2026.09"] }
+    en: { departments: ["Weiyun Chuangda (SmartSens AI Department)", "Applications Department"], periods: ["Sep 2026 \u2013 Present", "Jul 2026 \u2013 Sep 2026"] },
+    "zh-CN": { departments: ["威云创达（上海）人工智能科技有限公司（思特威 AI 部）", "\u5e94\u7528\u90e8"], periods: ["2026.09 \u2013 \u81f3\u4eca", "2026.07 \u2013 2026.09"] }
   };
   for (const language of languages) {
     const home = await readHtml(pageFile("index.html", language));
@@ -116,12 +142,13 @@ test("SmartSens retains both assignments with a shared overview and technology s
     assert.deepEqual(entry.find('[data-i18n="smartSensPosition"]').toArray().map((node) => home(node).text()), Array(2).fill(translations[language].smartSensPosition));
 
     const detail = await readHtml(pageFile("work/smartsens/index.html", language));
-    const roles = detail(".work-period-assignment");
+    const roles = detail(".work-detail-assignments > .work-experience-role");
     assert.equal(roles.length, 2);
-    assert.deepEqual(roles.find(".work-period-department").toArray().map((node) => detail(node).text()), expected[language].departments);
+    assert.deepEqual(roles.find(".work-experience-department").toArray().map((node) => detail(node).text()), expected[language].departments);
     assert.deepEqual(roles.find('[data-i18n="smartSensAiPeriod"], [data-i18n="smartSensApplicationsPeriod"]').toArray().map((node) => detail(node).text()), expected[language].periods);
-    assert.equal(detail(".work-detail-position").length, 1);
-    assert.equal(detail(".work-detail-position").text(), translations[language].smartSensDetailPosition);
+    assert.deepEqual(roles.find(".work-experience-position").toArray().map((node) => detail(node).text()), Array(2).fill(translations[language].smartSensPosition));
+    assert.equal(roles.first().find(".work-affiliation").text(), translations[language].smartSensAiAffiliation);
+    assert.equal(roles.last().find(".work-affiliation").length, 0);
     assert.equal(detail('[data-i18n="smartSensDetailLocation"]').length, 1);
     assert.equal(detail(".work-role").length, 0);
     assert.equal(detail(".work-detail > .work-detail-section").length, 2);
@@ -155,7 +182,7 @@ test("homepage internships share the same company and assignment structure", asy
   }
 });
 
-test("SmartShot presents verified preview metadata and an overview-only detail page", async () => {
+test("SmartShot shares Dongqiudi's development status and includes its main-window screenshot", async () => {
   for (const language of languages) {
     const home = await readHtml(pageFile("index.html", language));
     const entry = home('.project-title a[href*="smartshot"]').closest("article");
@@ -163,13 +190,16 @@ test("SmartShot presents verified preview metadata and an overview-only detail p
     assert.equal(entry.find('[data-i18n="smartShotDescription"]').text(), translations[language].smartShotDescription);
 
     const detail = await readHtml(pageFile("projects/smartshot/index.html", language));
+    const dongqiudi = await readHtml(pageFile("projects/dongqiudipure-android/index.html", language));
     assert.equal(detail('[data-i18n="roleCollaborator"]').text(), translations[language].roleCollaborator);
-    assert.equal(detail('[data-i18n="projectStatusPreview"]').text(), translations[language].projectStatusPreview);
-    assert.deepEqual(detail(".project-detail-meta dd").toArray().map((node) => detail(node).text()), ["Preview", "0.2.2", "macOS 14+", "Swift 6 / JavaScript"].map((value, index) => index === 0 ? translations[language].projectStatusPreview : value));
-    assert.equal(detail(".project-detail-section").length, 1);
+    assert.equal(detail(".project-status-value").text(), dongqiudi(".project-status-value").text());
+    assert.equal(detail(".project-status-value").attr("data-status"), dongqiudi(".project-status-value").attr("data-status"));
+    assert.deepEqual(detail(".project-detail-meta dd").toArray().map((node) => detail(node).text()), [translations[language].projectStatusInDevelopment, "0.2.6", "macOS 14+", "Swift 6 / JavaScript"]);
+    assert.equal(detail(".project-detail-section").length, 2);
     assert.equal(detail(".project-overview").text(), translations[language].smartShotProjectOverview);
-    assert.equal(detail(".project-screenshot").length, 0);
-    assert.equal(detail('.project-actions a[href="https://github.com/CHOS1N11111/SmartShot"]').length, 1);
+    assert.equal(detail(".project-screenshot").length, 1);
+    assert.equal(detail(".project-screenshot figcaption").text(), translations[language].smartShotScreenshotMainWindow);
+    assert.equal(detail('.project-actions a[href="https://github.com/infinityf4p/SmartShot"]').length, 1);
   }
 });
 
@@ -319,19 +349,34 @@ test("internship rows align consistently and SmartSens details fit all layouts",
 
         await tab.goto(new URL(pageFile("work/smartsens/index.html", language), baseUrl).href);
         assert.ok(await tab.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
-        const assignments = await tab.locator(".work-period-assignment").evaluateAll((nodes) => nodes.map((node) => ({
-          row: node.getBoundingClientRect().toJSON(),
-          period: node.children[0].getBoundingClientRect().toJSON(),
-          department: node.children[1].getBoundingClientRect().toJSON()
-        })));
+        const assignments = await tab.locator(".work-detail-assignments > .work-experience-role").evaluateAll((nodes) => nodes.map((node) => {
+          const department = node.querySelector(".work-experience-department");
+          const affiliation = node.querySelector(".work-affiliation");
+          const style = getComputedStyle(department);
+          return {
+            row: node.getBoundingClientRect().toJSON(),
+            department: department.getBoundingClientRect().toJSON(),
+            position: node.querySelector(".work-experience-position").getBoundingClientRect().toJSON(),
+            period: node.querySelector(".work-experience-period").getBoundingClientRect().toJSON(),
+            organizationStyle: {fontFamily: style.fontFamily, fontSize: style.fontSize, fontWeight: style.fontWeight, color: style.color},
+            affiliation: affiliation ? {bounds: affiliation.getBoundingClientRect().toJSON(), fontSize: getComputedStyle(affiliation).fontSize} : null
+          };
+        }));
         assert.equal(assignments.length, 2);
         assert.ok(assignments[1].row.top >= assignments[0].row.bottom);
-        for (const { row, period, department } of assignments) {
+        assert.deepEqual(assignments[0].organizationStyle, assignments[1].organizationStyle);
+        assert.ok(parseFloat(assignments[0].affiliation.fontSize) < parseFloat(assignments[0].organizationStyle.fontSize));
+        for (const { row, period, department, position, affiliation } of assignments) {
           assert.ok(row.left >= 0 && row.right <= width + 1);
-          assert.ok(department.left >= period.right - 1 || department.top >= period.bottom - 1,
-            `${language} department overlaps its period at ${width}px`);
+          assert.ok(position.top >= department.bottom - 1);
+          assert.ok(width <= 768 ? period.top >= position.bottom - 1 : period.left >= position.right - 1,
+            `${language} detail role and date overlap at ${width}px`);
+          if (affiliation) {
+            assert.ok(affiliation.bounds.top >= department.bottom - 1);
+            assert.ok(position.top >= affiliation.bounds.bottom - 1);
+          }
         }
-        const meta = await tab.locator(".work-detail-meta").boundingBox();
+        const meta = await tab.locator(".work-detail-assignments").boundingBox();
         const overview = await tab.locator(".work-detail-section").first().boundingBox();
         assert.ok(overview.y >= meta.y + meta.height);
         if (width === 390 || width === 1440) {
@@ -565,11 +610,34 @@ test("Dongqiudi screenshots use responsive previews and open all six originals",
   }
 });
 
+test("both publication languages download the same BibTeX file without an external service", async () => {
+  const context = await contextFor({ javaScriptEnabled: false });
+  try {
+    const tab = await context.newPage();
+    const publication = "publications/option-based-hierarchical-uav-networks/index.html";
+    const expected = await readFile(path.join(rootDirectory, path.dirname(publication), "citation.bib"), "utf8");
+    assert.match(expected, /^@article\{/);
+    for (const language of languages) {
+      await tab.goto(new URL(pageFile(publication, language), baseUrl).href);
+      const link = tab.getByRole("link", { name: "BibTeX", exact: true });
+      assert.equal(new URL(await link.getAttribute("href"), tab.url()).origin, new URL(baseUrl).origin);
+      const downloaded = tab.waitForEvent("download");
+      await link.click();
+      const download = await downloaded;
+      assert.equal(await download.failure(), null);
+      assert.equal(download.suggestedFilename(), "option-based-hierarchical-uav-networks.bib");
+      assert.equal(await readFile(await download.path(), "utf8"), expected);
+    }
+  } finally {
+    await context.close();
+  }
+});
+
 test("translated galleries and citation controls still work", async () => {
   const context = await contextFor({ viewport: { width: 390, height: 844 }, permissions: ["clipboard-read", "clipboard-write"] });
   try {
     const tab = await context.newPage();
-    for (const project of ["dongqiudipure-android", "tiebapure-android", "repopilot-agent", "adaptive-strategic-ai-mod-for-civilization-vi"]) {
+    for (const project of ["dongqiudipure-android", "tiebapure-android", "repopilot-agent", "adaptive-strategic-ai-mod-for-civilization-vi", "smartshot"]) {
       await tab.goto(baseUrl + `zh/projects/${project}/`);
       await tab.locator(".project-screenshot a").first().click();
       await tab.locator(".pswp--open").waitFor();

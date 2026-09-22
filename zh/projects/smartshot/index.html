@@ -12,10 +12,28 @@
     <link rel="alternate" hreflang="en" href="https://chos1n11111.github.io/projects/smartshot/">
     <link rel="alternate" hreflang="zh-CN" href="https://chos1n11111.github.io/zh/projects/smartshot/">
     <link rel="alternate" hreflang="x-default" href="https://chos1n11111.github.io/projects/smartshot/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CHOS1N11111">
+    <meta property="og:title" content="SmartShot | CHOS1N11111">
+    <meta property="og:description" content="SmartShot 是一款原生 macOS 截图与录屏工具，支持智能内容块选择、区域和长截图、图片标注、本地 OCR 与浏览器扩展。">
+    <meta property="og:url" content="https://chos1n11111.github.io/zh/projects/smartshot/">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://chos1n11111.github.io/assets/social-preview.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="朱泽南（CHOS1N11111）的个人网站">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SmartShot | CHOS1N11111">
+    <meta name="twitter:description" content="SmartShot 是一款原生 macOS 截图与录屏工具，支持智能内容块选择、区域和长截图、图片标注、本地 OCR 与浏览器扩展。">
+    <meta name="twitter:image" content="https://chos1n11111.github.io/assets/social-preview.png">
+    <meta name="twitter:image:alt" content="朱泽南（CHOS1N11111）的个人网站">
     <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:wght@600&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@700&amp;family=Source+Serif+4:opsz,wght@8..60,700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/vendor/photoswipe/dist/photoswipe.css">
     <link rel="stylesheet" href="../../../style.css">
   </head>
   <body class="detail-page-body">
@@ -104,11 +122,11 @@
           <dl class="project-detail-meta">
             <div>
               <dt data-i18n="projectStatusLabel">状态</dt>
-              <dd class="project-status-value" data-status="pre-release" data-i18n="projectStatusPreview">预览版</dd>
+              <dd class="project-status-value" data-status="in-development" data-i18n="projectStatusInDevelopment">开发中</dd>
             </div>
             <div>
               <dt data-i18n="projectVersionLabel">版本</dt>
-              <dd>0.2.2</dd>
+              <dd>0.2.6</dd>
             </div>
             <div>
               <dt data-i18n="projectPlatformLabel">平台</dt>
@@ -121,15 +139,31 @@
           </dl>
 
           <nav class="project-actions" aria-label="项目链接" data-i18n-aria-label="projectActions">
-            <a href="https://github.com/CHOS1N11111/SmartShot" target="_blank" rel="noopener noreferrer">
-              <span data-i18n="viewOnGitHub">在 GitHub 查看</span>
+            <a href="https://github.com/infinityf4p/SmartShot" target="_blank" rel="noopener noreferrer">
+              <span>GitHub · infinityf4p/SmartShot</span>
+              <span class="external-link-mark" aria-hidden="true">↗</span>
+            </a>
+            <span class="project-action-separator" aria-hidden="true">·</span>
+            <a href="https://github.com/infinityf4p/SmartShot/releases" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="projectReleases">版本下载</span>
               <span class="external-link-mark" aria-hidden="true">↗</span>
             </a>
           </nav>
 
           <section class="project-detail-section">
             <h2 data-i18n="projectOverviewHeading">项目介绍</h2>
-            <p class="project-overview" data-i18n="smartShotProjectOverview">SmartShot 是一款原生 macOS 截图与录屏工具，将智能内容块选择、区域和长截图、图片标注、本地 OCR、注重隐私的历史记录与屏幕录制整合在同一应用中。截图处理全部留在本机，无需账号，也不使用分析遥测或云端上传服务。配套浏览器扩展可截取网页内容块，并将结果导入原生编辑器。项目面向 macOS 14 及以上系统，目前提供 0.2.2 预览版。</p>
+            <p class="project-overview" data-i18n="smartShotProjectOverview">SmartShot 是一款原生 macOS 截图与录屏工具，将智能内容块选择、区域和长截图、图片标注、本地 OCR、注重隐私的历史记录与屏幕录制整合在同一应用中。截图处理全部留在本机，无需账号，也不使用分析遥测或云端上传服务。配套浏览器扩展可截取网页内容块，并将结果导入原生编辑器。项目面向 macOS 14 及以上系统，目前仍在开发中。</p>
+          </section>
+
+          <section class="project-detail-section">
+            <h2 data-i18n="projectScreenshotsHeading">截图</h2>
+            <!-- Screenshot source: https://github.com/infinityf4p/SmartShot/blob/main/Docs/Images/main-window.jpg -->
+            <figure class="project-screenshot project-screenshot--single">
+              <a href="../../../assets/projects/smartshot/main-window.jpg" target="_blank" rel="noopener noreferrer">
+                <img src="../../../assets/projects/smartshot/thumbnails/main-window-900.webp" srcset="../../../assets/projects/smartshot/thumbnails/main-window-480.webp 480w, ../../../assets/projects/smartshot/thumbnails/main-window-900.webp 900w" sizes="(max-width: 48rem) calc(100vw - 2rem), (max-width: 64rem) calc(100vw - 14rem), 46rem" alt="SmartShot 主界面" data-i18n-alt="smartShotScreenshotMainWindow" width="900" height="612" loading="lazy" decoding="async">
+              </a>
+              <figcaption data-i18n="smartShotScreenshotMainWindow">SmartShot 主界面</figcaption>
+            </figure>
           </section>
         </article>
       </div>
@@ -142,5 +176,8 @@
 
     <script src="../../../translations.js" defer=""></script>
     <script src="../../../script.js" defer=""></script>
+    <script src="../../../assets/vendor/photoswipe/dist/umd/photoswipe.umd.min.js" defer=""></script>
+    <script src="../../../assets/vendor/photoswipe/dist/umd/photoswipe-lightbox.umd.min.js" defer=""></script>
+    <script src="../../../gallery.js" defer=""></script>
   </body>
 </html>

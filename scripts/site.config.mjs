@@ -1,4 +1,14 @@
 export const siteOrigin = "https://chos1n11111.github.io/";
+export const siteName = "CHOS1N11111";
+export const socialImage = {
+  path: "assets/social-preview.png",
+  width: 1200,
+  height: 630,
+  alt: {
+    en: "Zhu Zenan (CHOS1N11111) personal website",
+    "zh-CN": "朱泽南（CHOS1N11111）的个人网站"
+  }
+};
 
 export const pages = [
   {
