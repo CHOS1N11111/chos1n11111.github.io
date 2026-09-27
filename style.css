@@ -772,7 +772,8 @@ h2 {
   content: "";
 }
 
-.project-status-value[data-status="released"]::before {
+.project-status-value[data-status="released"]::before,
+.project-status-value[data-status="completed"]::before {
   background: var(--accent-green);
 }
 

@@ -57,6 +57,11 @@ export const pages = [
     zhDescription: "SmartShot 是一款原生 macOS 截图与录屏工具，支持智能内容块选择、区域和长截图、图片标注、本地 OCR 与浏览器扩展。"
   },
   {
+    path: "projects/formula-1-data-analysis-and-prediction/index.html",
+    zhTitle: "Formula 1 Data Analysis and Prediction | CHOS1N11111",
+    zhDescription: "Formula 1 Data Analysis and Prediction 是一个可复现的 F1 数据分析与预测流程，涵盖历史分析、模型评估和 2026 赛季冠军预测。"
+  },
+  {
     path: "publications/option-based-hierarchical-uav-networks/index.html",
     zhTitle: "Option-Based Hierarchical UAV Networks | Zhu Zenan",
     zhDescription: "Zhu Zenan 参与的边缘辅助 UAV 网络动态移动群智感知研究，提供摘要、DOI 和引用信息。"

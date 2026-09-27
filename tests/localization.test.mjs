@@ -75,18 +75,15 @@ test("all generated HTML files contain translated content, metadata, and valid l
 
 test("sitemap and profile data describe the same bilingual pages and identity", async () => {
   const $ = load(await readFile(path.join(rootDirectory, "sitemap.xml"), "utf8"), { xml: true });
+  const robots = await readFile(path.join(rootDirectory, "robots.txt"), "utf8");
   assert.equal($("urlset").attr("xmlns"), "http://www.sitemaps.org/schemas/sitemap/0.9");
-  assert.equal($("urlset").attr("xmlns:xhtml"), "http://www.w3.org/1999/xhtml");
+  assert.match(robots, /User-agent: \*\nAllow: \/\n\nSitemap: https:\/\/chos1n11111\.github\.io\/sitemap\.xml/);
   const locations = $("loc").toArray().map((node) => $(node).text());
   assert.deepEqual(locations, variants.map(({ page, language }) => pageUrl(page.path, language)));
   assert.equal(new Set(locations).size, variants.length);
   $("url").each((index, node) => {
-    const links = $(node).children("xhtml\\:link");
-    assert.equal(links.length, 3);
-    links.each((_, link) => {
-      const language = $(link).attr("hreflang") === "zh-CN" ? "zh-CN" : "en";
-      assert.equal($(link).attr("href"), pageUrl(variants[index].page.path, language));
-    });
+    assert.equal($(node).children("loc").length, 1);
+    assert.equal($(node).children().length, 1);
   });
   for (const language of languages) {
     const html = await readHtml(pageFile("index.html", language));
@@ -129,8 +126,8 @@ test("sharing cards match each page and reference a correctly sized local PNG", 
 
 test("SmartSens retains both assignments with a shared overview and technology stack", async () => {
   const expected = {
-    en: { departments: ["Weiyun Chuangda (SmartSens AI Department)", "Applications Department"], periods: ["Sep 2026 \u2013 Present", "Jul 2026 \u2013 Sep 2026"] },
-    "zh-CN": { departments: ["威云创达（上海）人工智能科技有限公司（思特威 AI 部）", "\u5e94\u7528\u90e8"], periods: ["2026.09 \u2013 \u81f3\u4eca", "2026.07 \u2013 2026.09"] }
+    en: { departments: ["Weiyun Chuangda (SmartSens AI Department)", "Applications Department"], positions: ["AI Agent Intern", "Software Development Intern"], periods: ["Sep 2026 \u2013 Present", "Jul 2026 \u2013 Sep 2026"] },
+    "zh-CN": { departments: ["威云创达（上海）人工智能科技有限公司（思特威 AI 部）", "\u5e94\u7528\u90e8"], positions: ["AI 智能体实习生", "软件开发实习生"], periods: ["2026.09 \u2013 \u81f3\u4eca", "2026.07 \u2013 2026.09"] }
   };
   for (const language of languages) {
     const home = await readHtml(pageFile("index.html", language));
@@ -139,14 +136,14 @@ test("SmartSens retains both assignments with a shared overview and technology s
     assert.equal(entry.find(".work-experience-role").length, 2);
     assert.deepEqual(entry.find(".work-experience-department").toArray().map((node) => home(node).text()), expected[language].departments);
     assert.deepEqual(entry.find(".work-experience-period").toArray().map((node) => home(node).text()), expected[language].periods);
-    assert.deepEqual(entry.find('[data-i18n="smartSensPosition"]').toArray().map((node) => home(node).text()), Array(2).fill(translations[language].smartSensPosition));
+    assert.deepEqual(entry.find(".work-experience-position").toArray().map((node) => home(node).text()), expected[language].positions);
 
     const detail = await readHtml(pageFile("work/smartsens/index.html", language));
     const roles = detail(".work-detail-assignments > .work-experience-role");
     assert.equal(roles.length, 2);
     assert.deepEqual(roles.find(".work-experience-department").toArray().map((node) => detail(node).text()), expected[language].departments);
     assert.deepEqual(roles.find('[data-i18n="smartSensAiPeriod"], [data-i18n="smartSensApplicationsPeriod"]').toArray().map((node) => detail(node).text()), expected[language].periods);
-    assert.deepEqual(roles.find(".work-experience-position").toArray().map((node) => detail(node).text()), Array(2).fill(translations[language].smartSensPosition));
+    assert.deepEqual(roles.find(".work-experience-position").toArray().map((node) => detail(node).text()), expected[language].positions);
     assert.equal(roles.first().find(".work-affiliation").text(), translations[language].smartSensAiAffiliation);
     assert.equal(roles.last().find(".work-affiliation").length, 0);
     assert.equal(detail('[data-i18n="smartSensDetailLocation"]').length, 1);

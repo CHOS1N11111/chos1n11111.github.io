@@ -157,19 +157,14 @@ function renderPage(source, page, language) {
 }
 
 function renderSitemap() {
-  const $ = load('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"></urlset>', { xml: true });
+  // Keep the sitemap to the core protocol. Language alternates are declared in
+  // each page's HTML head, which avoids parser issues in Search Console.
+  const $ = load('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>', { xml: true });
   const urlset = $("urlset");
   for (const page of pages) {
     for (const language of languages) {
       const entry = $("<url></url>");
       entry.append("\n    ", $("<loc></loc>").text(pageUrl(page.path, language)));
-      for (const alternate of [...languages, "x-default"]) {
-        entry.append("\n    ", $("<xhtml:link></xhtml:link>").attr({
-          rel: "alternate",
-          hreflang: alternate,
-          href: pageUrl(page.path, alternate === "zh-CN" ? alternate : "en")
-        }));
-      }
       entry.append("\n  ");
       urlset.append("\n  ", entry);
     }
