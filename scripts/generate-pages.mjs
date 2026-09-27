@@ -156,21 +156,27 @@ function renderPage(source, page, language) {
   return $.html().trimEnd() + "\n";
 }
 
+function sitemapLocations() {
+  return pages.flatMap((page) => languages.map((language) => pageUrl(page.path, language)));
+}
+
 function renderSitemap() {
   // Keep the sitemap to the core protocol. Language alternates are declared in
   // each page's HTML head, which avoids parser issues in Search Console.
   const $ = load('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>', { xml: true });
   const urlset = $("urlset");
-  for (const page of pages) {
-    for (const language of languages) {
-      const entry = $("<url></url>");
-      entry.append("\n    ", $("<loc></loc>").text(pageUrl(page.path, language)));
-      entry.append("\n  ");
-      urlset.append("\n  ", entry);
-    }
+  for (const location of sitemapLocations()) {
+    const entry = $("<url></url>");
+    entry.append("\n    ", $("<loc></loc>").text(location));
+    entry.append("\n  ");
+    urlset.append("\n  ", entry);
   }
   urlset.append("\n");
   return $.xml() + "\n";
+}
+
+function renderSitemapText() {
+  return sitemapLocations().join("\n") + "\n";
 }
 
 export async function generatePages({ check = false } = {}) {
@@ -182,6 +188,7 @@ export async function generatePages({ check = false } = {}) {
     outputs.set(pageFile(page.path, "zh-CN"), renderPage(english, page, "zh-CN"));
   }
   outputs.set("sitemap.xml", renderSitemap());
+  outputs.set("sitemap.txt", renderSitemapText());
   const changed = [];
   for (const [file, content] of outputs) {
     const destination = path.join(rootDirectory, file);

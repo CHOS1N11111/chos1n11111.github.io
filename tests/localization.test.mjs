@@ -75,12 +75,14 @@ test("all generated HTML files contain translated content, metadata, and valid l
 
 test("sitemap and profile data describe the same bilingual pages and identity", async () => {
   const $ = load(await readFile(path.join(rootDirectory, "sitemap.xml"), "utf8"), { xml: true });
+  const textSitemap = await readFile(path.join(rootDirectory, "sitemap.txt"), "utf8");
   const robots = await readFile(path.join(rootDirectory, "robots.txt"), "utf8");
   assert.equal($("urlset").attr("xmlns"), "http://www.sitemaps.org/schemas/sitemap/0.9");
-  assert.match(robots, /User-agent: \*\nAllow: \/\n\nSitemap: https:\/\/chos1n11111\.github\.io\/sitemap\.xml/);
+  assert.match(robots, /User-agent: \*\nAllow: \/\n\nSitemap: https:\/\/chos1n11111\.github\.io\/sitemap\.xml\nSitemap: https:\/\/chos1n11111\.github\.io\/sitemap\.txt/);
   const locations = $("loc").toArray().map((node) => $(node).text());
   assert.deepEqual(locations, variants.map(({ page, language }) => pageUrl(page.path, language)));
   assert.equal(new Set(locations).size, variants.length);
+  assert.deepEqual(textSitemap.trim().split("\n"), locations);
   $("url").each((index, node) => {
     assert.equal($(node).children("loc").length, 1);
     assert.equal($(node).children().length, 1);
