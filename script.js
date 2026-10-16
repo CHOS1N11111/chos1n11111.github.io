@@ -48,11 +48,11 @@ const navigationSubmenus = [
     sectionId: "projects",
     triggerId: "navigation-projects",
     items: [
-      { path: "projects/dongqiudipure-android/index.html", label: "DongqiudiPure Android" },
       { path: "projects/tiebapure-android/index.html", label: "TiebaPure Android" },
       { path: "projects/adaptive-strategic-ai-mod-for-civilization-vi/index.html", label: "Adaptive Strategic AI mod for Civilization VI" },
       { path: "projects/repopilot-agent/index.html", label: "RepoPilot Agent" },
-      { path: "projects/smartshot/index.html", label: "SmartShot" }
+      { path: "projects/smartshot/index.html", label: "SmartShot" },
+      { path: "projects/formula-1-data-analysis-and-prediction/index.html", label: "Formula 1 Data Analysis and Prediction" }
     ]
   },
   {

@@ -32,11 +32,6 @@ export const pages = [
     zhDescription: "在才历算法部门的实习经历，开发面向 AI 面试与人才测评的 AIGC 自动出题系统。"
   },
   {
-    path: "projects/dongqiudipure-android/index.html",
-    zhTitle: "DongqiudiPure Android | CHOS1N11111",
-    zhDescription: "DongqiudiPure Android 是使用 Kotlin 与 Jetpack Compose 构建的第三方懂球帝客户端，支持足球资讯、赛程赛果、赛事数据与球队和球员资料。本页展示项目介绍与界面截图。"
-  },
-  {
     path: "projects/tiebapure-android/index.html",
     zhTitle: "TiebaPure Android | CHOS1N11111",
     zhDescription: "TiebaPure Android 是使用 Kotlin 与 Jetpack Compose 原生构建的非官方百度贴吧客户端，支持访客浏览、账户功能与本地阅读管理。本页展示项目介绍与界面截图。"

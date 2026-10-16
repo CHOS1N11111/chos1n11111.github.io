@@ -75,8 +75,8 @@ test("all generated HTML files contain translated content, metadata, and valid l
 
 test("sitemap and profile data describe the same bilingual pages and identity", async () => {
   const $ = load(await readFile(path.join(rootDirectory, "sitemap.xml"), "utf8"), { xml: true });
-  const textSitemap = await readFile(path.join(rootDirectory, "sitemap.txt"), "utf8");
-  const robots = await readFile(path.join(rootDirectory, "robots.txt"), "utf8");
+  const textSitemap = (await readFile(path.join(rootDirectory, "sitemap.txt"), "utf8")).replaceAll("\r\n", "\n");
+  const robots = (await readFile(path.join(rootDirectory, "robots.txt"), "utf8")).replaceAll("\r\n", "\n");
   assert.equal($("urlset").attr("xmlns"), "http://www.sitemaps.org/schemas/sitemap/0.9");
   assert.match(robots, /User-agent: \*\nAllow: \/\n\nSitemap: https:\/\/chos1n11111\.github\.io\/sitemap\.xml\nSitemap: https:\/\/chos1n11111\.github\.io\/sitemap\.txt/);
   const locations = $("loc").toArray().map((node) => $(node).text());
@@ -181,7 +181,7 @@ test("homepage internships share the same company and assignment structure", asy
   }
 });
 
-test("SmartShot shares Dongqiudi's development status and includes its main-window screenshot", async () => {
+test("SmartShot shows its development status and includes its main-window screenshot", async () => {
   for (const language of languages) {
     const home = await readHtml(pageFile("index.html", language));
     const entry = home('.project-title a[href*="smartshot"]').closest("article");
@@ -189,10 +189,9 @@ test("SmartShot shares Dongqiudi's development status and includes its main-wind
     assert.equal(entry.find('[data-i18n="smartShotDescription"]').text(), translations[language].smartShotDescription);
 
     const detail = await readHtml(pageFile("projects/smartshot/index.html", language));
-    const dongqiudi = await readHtml(pageFile("projects/dongqiudipure-android/index.html", language));
     assert.equal(detail('[data-i18n="roleCollaborator"]').text(), translations[language].roleCollaborator);
-    assert.equal(detail(".project-status-value").text(), dongqiudi(".project-status-value").text());
-    assert.equal(detail(".project-status-value").attr("data-status"), dongqiudi(".project-status-value").attr("data-status"));
+    assert.equal(detail(".project-status-value").text(), translations[language].projectStatusInDevelopment);
+    assert.equal(detail(".project-status-value").attr("data-status"), "in-development");
     assert.deepEqual(detail(".project-detail-meta dd").toArray().map((node) => detail(node).text()), [translations[language].projectStatusInDevelopment, "0.2.6", "macOS 14+", "Swift 6 / JavaScript"]);
     assert.equal(detail(".project-detail-section").length, 2);
     assert.equal(detail(".project-overview").text(), translations[language].smartShotProjectOverview);
@@ -435,7 +434,7 @@ test("fixed sidebars keep the language control reachable in short windows", asyn
     for (const viewport of [{ width: 1024, height: 360 }, { width: 844, height: 390 }, { width: 1440, height: 900 }]) {
       await tab.setViewportSize(viewport);
       for (const language of languages) {
-        for (const route of ["index.html", "projects/dongqiudipure-android/index.html"]) {
+        for (const route of ["index.html", "projects/tiebapure-android/index.html"]) {
           await tab.goto(new URL(pageFile(route, language), baseUrl).href);
           const sidebar = tab.locator(".profile-sidebar");
           assert.equal(await sidebar.evaluate((node) => getComputedStyle(node).position), "fixed");
@@ -464,7 +463,7 @@ test("Escape dismisses desktop submenus and they reopen on a new focus or hover"
   const context = await contextFor({ viewport: { width: 1440, height: 900 } });
   try {
     const tab = await context.newPage();
-    for (const route of ["", "zh/projects/dongqiudipure-android/"]) {
+    for (const route of ["", "zh/projects/tiebapure-android/"]) {
       await tab.goto(baseUrl + route);
       for (const id of ["navigation-work", "navigation-projects", "navigation-research"]) {
         const trigger = tab.locator(`#${id}`);
@@ -552,7 +551,7 @@ test("file previews open all pages and support language links and legacy queries
   }
 });
 
-test("Dongqiudi screenshots use responsive previews and open all six originals", async () => {
+test("TiebaPure screenshots use responsive previews and open all six originals", async () => {
   const context = await contextFor();
   try {
     const tab = await context.newPage();
@@ -564,7 +563,7 @@ test("Dongqiudi screenshots use responsive previews and open all six originals",
         const trackRequest = (request) => requests.push(request.url());
         tab.on("request", trackRequest);
         try {
-          await tab.goto(new URL(pageFile("projects/dongqiudipure-android/index.html", language), baseUrl).href);
+          await tab.goto(new URL(pageFile("projects/tiebapure-android/index.html", language), baseUrl).href);
           const images = tab.locator(".project-screenshot img");
           assert.equal(await images.count(), 6);
           for (const image of await images.all()) {
@@ -581,12 +580,12 @@ test("Dongqiudi screenshots use responsive previews and open all six originals",
               return colors.size > 50 && node.currentSrc.endsWith(".webp");
             }));
           }
-          assert.equal(requests.some((url) => /dongqiudipure-android\/[^/]+\.png$/.test(url)), false);
+          assert.equal(requests.some((url) => /tiebapure-android\/[^/]+\.png$/.test(url)), false);
           assert.equal(await images.evaluateAll((nodes) => new Set(nodes.map((node) => node.sizes)).size), 1);
           assert.equal(await tab.locator(".project-screenshot-grid").evaluate((node) => getComputedStyle(node).gridTemplateColumns.split(" ").length), width >= 1024 ? 3 : 2);
           assert.ok(await tab.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
           await tab.evaluate(() => scrollTo(0, 0));
-          await tab.screenshot({ path: path.join(screenshots, `dongqiudi-${language}-${width}.png`), fullPage: true });
+          await tab.screenshot({ path: path.join(screenshots, `tiebapure-${language}-${width}.png`), fullPage: true });
 
           await tab.locator(".project-screenshot a").first().click();
           await tab.waitForFunction(() => document.activeElement?.classList.contains("pswp"));
@@ -595,7 +594,7 @@ test("Dongqiudi screenshots use responsive previews and open all six originals",
             if (index) await tab.locator(".pswp__button--arrow--next").click();
             await tab.waitForFunction((caption) => document.querySelector("#gallery-caption")?.textContent === caption, captions[index]);
             const source = await tab.locator(".project-screenshot a").nth(index).getAttribute("href");
-            await tab.waitForFunction((url) => [...document.querySelectorAll(".pswp__img")].some((image) => image.src === url && image.naturalWidth === 1080), new URL(source, tab.url()).href);
+            await tab.waitForFunction((url) => [...document.querySelectorAll(".pswp__img")].some((image) => image.src === url && image.naturalWidth === 720), new URL(source, tab.url()).href);
           }
           await tab.keyboard.press("Escape");
           await tab.locator(".pswp--open").waitFor({ state: "detached" });
@@ -636,7 +635,7 @@ test("translated galleries and citation controls still work", async () => {
   const context = await contextFor({ viewport: { width: 390, height: 844 }, permissions: ["clipboard-read", "clipboard-write"] });
   try {
     const tab = await context.newPage();
-    for (const project of ["dongqiudipure-android", "tiebapure-android", "repopilot-agent", "adaptive-strategic-ai-mod-for-civilization-vi", "smartshot"]) {
+    for (const project of ["tiebapure-android", "repopilot-agent", "adaptive-strategic-ai-mod-for-civilization-vi", "smartshot"]) {
       await tab.goto(baseUrl + `zh/projects/${project}/`);
       await tab.locator(".project-screenshot a").first().click();
       await tab.locator(".pswp--open").waitFor();
